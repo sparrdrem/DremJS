@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Paint</title>
+		<script src="scripts/modernizr.js"></script>
+		<link href="stylesheets/normalize.css" rel="stylesheet">
+		<link href="stylesheets/bootstrap.min.css" rel="stylesheet">
+		<link href="stylesheets/style.css" rel="stylesheet">
+	</head>
+	<body>
+		<div class="container-fluid span14 well">
+			<div class="navbar">
+				<div class="navbar-inner">
+					<a href="#" class="brand">Simple Paint App</a>
+				
+					<ul class="nav">
+						<li><a id="newCanvasBtn" href="#newPaintModal" data-toggle="modal"><i class="icon-file"></i> New</a></li>
+						<li><a id="saveCanvasBtn" href="#"><i class="icon-download"></i> Save</a></li>
+						<li><a id="clearCanvasBtn" href="#"><i class="icon-remove"></i> Clear</a></li>
+					</ul>
+					<form class="navbar-form pull-left">
+						<div id="colorPalette" class="btn-group btn-small">
+							<a name="000000" class="btn btn-small btn-inverse active" href="#">&nbsp;</a>
+							<a name="E0534E" class="btn btn-small btn-danger" href="#">&nbsp;</a>
+							<a name="FAA630" class="btn btn-small btn-warning" href="#">&nbsp;</a>
+							<a name="5CB55C" class="btn btn-small btn-success" href="#">&nbsp;</a>
+							<a name="48AECC" class="btn btn-small btn-info" href="#">&nbsp;</a>
+							<a name="0B8BCC" class="btn btn-small btn-primary" href="#">&nbsp;</a>
+						</div>
+					</form>
+				</div>
+			</div>
+			
+			<canvas id="myCanvas" width="1024" height="768"></canvas>
+			
+			<div id="newPaintModal" class="modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-header">
+					<h3>Simple Paint App</h3>
+				</div>
+				<div class="modal-body">
+					<p>Select from one of the following canvases to use:</p>
+					
+					<div class="row-fluid">
+						<ul class="thumbnails">
+							<li id="blankCanvas" class="span4 canvasIcon">
+								<div class="thumbnail">
+								<img src="img/blank-thumbnail.gif" alt="Blank Canvas">
+								<div class="caption">
+								<h4>Blank</h4>
+								<p>A blank canvas with a width size of 1024 and height size of 768.</p>
+								</div>
+								</div>
+							</li>
+							<li id="spidermanCanvas" class="span4 canvasIcon">
+								<div class="thumbnail">
+								<img width="300" height="200" src="img/spiderman-thumbnail.gif" alt="Spiderman Thumbnail">
+								<div class="caption">
+								<h4>Spiderman</h4>
+								<p>A canvas with a Spiderman image on it, brilliant for colouring in.</p>
+								</div>
+								</div>
+							</li>
+							<li id="batmanCanvas" class="span4 canvasIcon">
+								<div class="thumbnail">
+								<img width="300" height="200" src="img/batman-thumbnail.gif" alt="Batman Thumbnail">
+								<div class="caption">
+								<h4>Batman</h4>
+								<p>A canvas with a Batman image on it, brilliant for colouring in.</p>
+								</div>
+								</div>
+							</li>
+						</ul>
+					</div>
+
+				</div>
+				<div class="modal-footer">
+					<p>
+						Compatible with modern browsers:  
+						<image class="compatibleBrowsersIcon" src="img/chrome.gif" title="Google Chrome 4.0+"/>
+						<image class="compatibleBrowsersIcon" src="img/firefox.gif" title="Mozilla Firefox 2.0+"/>
+						<image class="compatibleBrowsersIcon" src="img/ie.gif" title="Internet Explorer 9.0+"/>
+						<image class="compatibleBrowsersIcon" src="img/opera.gif" title="Opera 9.0+"/>
+						<image class="compatibleBrowsersIcon" src="img/safari.gif" title="Safari 3.1+"/>
+					</p>
+				</div>
+		</div>
+			
+			<footer>
+				<p>Created by <a href="https://www.twitter.com/iamshanedoyle">iamshanedoyle</a> for fun!</p>
+			</footer>
+			
+		</div>
+		
+		<script src="scripts/jquery-1.8.2.min.js"></script>
+		<script src="scripts/bootstrap.js"></script>
+		<script src="scripts/paint.js"></script>
+		<script src="scripts/index.js"></script>
+	</body>
+</html>

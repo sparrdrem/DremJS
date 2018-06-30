@@ -1,0 +1,83 @@
+!!! 5
+html
+  head
+    meta(charset='UTF-8')
+    title Paint
+    script(src='javascripts/modernizr.js')
+    script(type='text/javascript')
+      Modernizr.load({
+      test: Modernizr.canvas,
+      nope: 'javascripts/excanvas.js'
+      });
+    link(href='stylesheets/normalize.css', rel='stylesheet')
+    link(href='stylesheets/bootstrap.min.css', rel='stylesheet')
+    link(href='stylesheets/styles.css', rel='stylesheet')
+  body
+    div.container.well
+      div.navbar
+        div.navbar-inner
+          a.brand(href='#') Simple Paint App
+          ul.nav
+            li
+              a#newCanvasBtn(href='#newPaintModal', data-toggle='modal')
+                i.icon-file
+                | New
+            li
+              a#saveCanvasBtn(href='#')
+                i.icon-download
+                | Save
+            li
+              a#clearCanvasBtn(href='#')
+                i.icon-remove
+                | Clear
+          form.navbar-form.pull-left
+            #colorPalette.btn-group.btn-small
+              a.btn.btn-small.btn-inverse.active(name='000000', href='#')&nbsp;
+              a.btn.btn-small.btn-danger(name='E0534E', href='#')&nbsp;
+              a.btn.btn-small.btn-warning(name='FAA630', href='#')&nbsp;
+              a.btn.btn-small.btn-success(name='5CB55C', href='#')&nbsp;
+              a.btn.btn-small.btn-info(name='48AECC', href='#')&nbsp;
+              a.btn.btn-small.btn-primary(name='0B8BCC', href='#')&nbsp;
+      canvas#myCanvas(width='1024', height='768')
+      #newPaintModal.modal(tabindex='-1', role='dialog', aria-labelledby='myModalLabel', aria-hidden='true')
+        div.modal-header
+          h3 Simple Paint App
+        div.modal-body
+          p Select from one of the following canvases to use:
+          div.row-fluid
+            ul.thumbnails
+              li#blankCanvas.span4.canvasIcon
+                .thumbnail
+                  img(src='img/blank-thumbnail.gif', alt='Blank Canvas')
+                  .caption
+                    h4 Blank
+                    p A blank canvas with a width size of 1024 and height size of 768.
+              li#spidermanCanvas.span4.canvasIcon
+                .thumbnail
+                  img(width='300', height='200', src='img/spiderman-thumbnail.gif', alt='Spiderman Thumbnail')
+                  .caption
+                    h4 Spiderman
+                    p A canvas with a Spiderman image on it, brilliant for colouring in.
+              li#batmanCanvas.span4.canvasIcon
+                .thumbnail
+                  img(width='300', height='200', src='img/batman-thumbnail.gif', alt='Batman Thumbnail')
+                  .caption
+                    h4 Batman
+                    p A canvas with a Batman image on it, brilliant for colouring in.
+        div.modal-footer
+          p
+            | Compatible with modern browsers:&nbsp;
+            image.compatibleBrowsersIcon(src='img/chrome.gif', title='Google Chrome 4.0+')
+            image.compatibleBrowsersIcon(src='img/firefox.gif', title='Mozilla Firefox 2.0+')
+            image.compatibleBrowsersIcon(src='img/ie.gif', title='Internet Explorer 9.0+')
+            image.compatibleBrowsersIcon(src='img/opera.gif', title='Opera 9.0+')
+            image.compatibleBrowsersIcon(src='img/safari.gif', title='Safari 3.1+')
+      footer
+        p.centered-header
+          | Created by&nbsp;
+          a(href='https://www.twitter.com/iamshanedoyle') iamshanedoyle&nbsp;
+          | for fun!
+    script(src='javascripts/jquery-1.8.2.min.js')
+    script(src='javascripts/bootstrap.js')
+    script(src='javascripts/paint.js')
+    script(src='javascripts/index.js')
