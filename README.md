@@ -1,5 +1,5 @@
 # DremJS
-A web OS featuring 3rd party support, an IDE, and much more.
+A web OS featuring 3rd party support, an IDE (coming soon!), and much more (coming soon too :v).
 
 It's free and completly hosted on GitHub. No more building needed!!! Just fork the DremJS Repository and go to:
 
