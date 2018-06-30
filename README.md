@@ -5,6 +5,6 @@ It's free and completly hosted on GitHub. No more building needed!!! Just fork t
 
 <code>yourusername.github.io/DremJS</code>
 
-Alternatively, you can also download this and upload it to your own web server (as this project is open source). Just give credit for the original source code.
+Alternatively, you can also download this and upload it to your own web server (as this project is open source and licensed under the terms of the GNU General Public License v3). Just give credit for the original source code.
 
 (C) Innovation Inc. 2018
