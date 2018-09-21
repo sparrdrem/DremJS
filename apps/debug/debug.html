@@ -2,6 +2,18 @@
 <html>
     <head>
         <title>Notice</title>
+<script>
+function proceed() {
+    window.open("https://gitreports.com/issue/SamParisot/DremJS");
+}
+</script>
+        
+<script>
+function goBack() {
+    window.open("https://sparrdrem.github.io/DremJS/index2.html");
+}
+</script>
+
     </head>
     
     <style type="text/css">
@@ -21,10 +33,9 @@
             <br />
             <br />
             <p>
-                This will transfer you to the GitReports page. <br />
+                This will transfer you to the GitReports page in a new tab.<br />
             </p>
-            <center>
-                <button type="button">Proceed</button>
-                <button type="button">Go Back</button>
+                <input type="button" value="Proceed" onclick="proceed()">
+                <input type="button" value="Go Back" onclick="goBack()">
     </body>
 </html>
