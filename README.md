@@ -4,6 +4,8 @@ A web OS featuring 3rd party support, an IDE (coming soon!), and much more (comi
 It's free and completly hosted on GitHub. No more building needed!!!
 Just download this and upload it to your own web server (as this project is open source and licensed under the terms of the GNU General Public License v3). Just give credit for the original source code.
 
+No need for JQuery!!! JQuery is already embedded in DremJS.
+
 Alternatively, you can fork this repository and go to the following site after setting up GitHub pages:
 <code>yourusername.github.io/DremJS</code>
 However, this is depreciated as updating and installing apps is much harder.
