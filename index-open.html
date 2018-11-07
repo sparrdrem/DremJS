@@ -3,6 +3,25 @@
   <title>DremJS</title>
 	<embed src="mopen.mp3" width="0" height="0" loop="false" autostart="true" hidden="true" />
 	<embed src="ambient.mp3" width="0" loop="true" autostart="true" hidden="true" />
+	<script src="jquery/jquery-3.3.1.min.js"></script>
+<script src="jquery/jquery-3.3.1.min.js"></script>
+<script>
+function startTime() {
+    var today = new Date();
+    var h = today.getHours();
+    var m = today.getMinutes();
+    var s = today.getSeconds();
+    m = checkTime(m);
+    s = checkTime(s);
+    document.getElementById('txt').innerHTML =
+    h + ":" + m + ":" + s;
+    var t = setTimeout(startTime, 500);
+}
+function checkTime(i) {
+    if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
+    return i;
+}
+</script>
     <style>
     .start {
       position: absolute;
@@ -35,6 +54,12 @@
     right: 16px;
     font-size: 12px;
 	    }
+	    		    .br4 {
+    position: absolute;
+    bottom: 50px;
+    right: 16px;
+    font-size: 12px;
+	    }
       html { 
       background: url(DremJS-Background.png) no-repeat center center fixed; 
       -webkit-background-size: cover;
@@ -57,7 +82,8 @@
     margin: 0;
 }
   </style>
-  <body>
+  <body onload="startTime();">
+<p class="cwhite br4"><div id="txt"></div></p>
     <p class="cwhite br3">DremJS Version 0.0.8-2a</p>
     <p class="cwhite br2">Build 14</p>
     <p class="cwhite br1">&copy; Innovation Inc.</p>
