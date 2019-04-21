@@ -12,23 +12,6 @@
   <title>DremJS</title>
 	<head>
 <script src="jquery/jquery-3.3.1.min.js"></script>
-<script>
-function startTime() {
-    var today = new Date();
-    var h = today.getHours();
-    var m = today.getMinutes();
-    var s = today.getSeconds();
-    m = checkTime(m);
-    s = checkTime(s);
-    document.getElementById('txt').innerHTML =
-    h + ":" + m + ":" + s;
-    var t = setTimeout(startTime, 500);
-}
-function checkTime(i) {
-    if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
-    return i;
-}
-</script>
 		<link rel="icon" href="favicon.ico">
 </head>
     <style>
@@ -46,9 +29,10 @@ function checkTime(i) {
       color: white;
       }
   </style>
-  <body onload="startTime();">
-	  <center><div id="txt"></div>
-	  <iframe src="index-closed.html" style="height:90%;width:100%"></iframe>
-	  <a href="index2.html"><button>Home</button></a></center>
+	<body">
+	  <center>
+		  <iframe src="index-all.html" frameborder="0" style="height:90%;width:100%"></iframe>
+		  <a href="index2.html"><button>Home</button></a>
+	  </center>
 	</body>
 </html>
