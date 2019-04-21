@@ -25,5 +25,4 @@ Copy your DremJS Desktop application list with the new application list in the n
 Note: You should delete any duplicate application listings!
 
 And that's it! Now you have the latest version of DremJS installed on your web server!
-
-(C) Innovation Inc. 2018
+&copy; Innovation Inc. 2019
