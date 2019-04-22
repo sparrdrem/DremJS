@@ -40,12 +40,14 @@ function checkTime(i) {
 	p {
 		color: white;
 	    }
-	
+	.nowrap {
+		white-space: nowrap;	    
+	    }
   </style>
 	
   <body style="background-color:black;" onload="startTime();">
-	  <a target="app" href="index-closed.html" title="Returns you to the Desktop"><button>Home</button></a><p>|</p>
-	  <a target="app" href="apps/About/index.html"><img src="apps/About/about.png"></a><p>|</p>
+	  <a target="app" href="index-closed.html" title="Returns you to the Desktop"><button>Home</button></a><p class="nowrap">|</p>
+	  <a target="app" href="apps/About/index.html"><img src="apps/About/about.png"></a><p class="nowrap">|</p>
 	  <br />
 	  <div class="cwhite" style="text-align:left" id="txt"></div>
 	</body>
