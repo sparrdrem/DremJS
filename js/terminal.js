@@ -2,7 +2,16 @@ var util = util || {};
 util.toArray = function(list) {
   return Array.prototype.slice.call(list || [], 0);
 };
+function show_image(src, width, height, alt) {
+    var img = document.createElement("img");
+    img.src = src;
+    img.width = width;
+    img.height = height;
+    img.alt = alt;
 
+    // This next line will just add it to the <body> tag
+    document.body.appendChild(img);
+}
 var Terminal = Terminal || function(cmdLineContainer, outputContainer) {
   window.URL = window.URL || window.webkitURL;
   window.requestFileSystem = window.requestFileSystem || window.webkitRequestFileSystem;
@@ -11,7 +20,7 @@ var Terminal = Terminal || function(cmdLineContainer, outputContainer) {
   var output_ = document.querySelector(outputContainer);
 
   const CMDS_ = [
-    'cat', 'clear', 'clock', 'date', 'echo', 'help', 'uname', 'whoami'
+    'cat', 'clear', 'clock', 'date', 'echo', 'help', 'uname', 'whoami', 'spin'
   ];
   
   var fs_ = null;
@@ -134,6 +143,9 @@ var Terminal = Terminal || function(cmdLineContainer, outputContainer) {
           for (var prop in codehelper_ip)
             result += prop + ": " + codehelper_ip[prop] + "<br>";
           output(result);
+          break;
+        case 'spin':
+          show_image('spin.gif', 100px, 100px, 'spinny');
           break;
         default:
           if (cmd) {
