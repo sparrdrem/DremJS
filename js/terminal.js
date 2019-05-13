@@ -22,7 +22,7 @@ var Terminal = Terminal || function(cmdLineContainer, outputContainer) {
   var output_ = document.querySelector(outputContainer);
 
   const CMDS_ = [
-    'cat', 'clear', 'clock', 'date', 'echo', 'help', 'uname', 'whoami'
+    'cat', 'clear', 'clock', 'date', 'echo', 'help', 'uname', 'whoami', 'cmd_fm',
   ];
   
   var fs_ = null;
@@ -145,6 +145,9 @@ var Terminal = Terminal || function(cmdLineContainer, outputContainer) {
           for (var prop in codehelper_ip)
             result += prop + ": " + codehelper_ip[prop] + "<br>";
           output(result);
+          break;
+        case 'cmd_fm':
+            window.open("https://cmd.to/fm","_self")
           break;
         case 'spin':
             show_image('spin.gif', 100, 100, 'Spinny');
