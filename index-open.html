@@ -115,6 +115,7 @@
 	       var newElement="<div onclick=\"moveToFront(" + app + ")\" id=\"" + app + "\" class=\"framewrap\"><input type=\"button\" onclick=\"closeApplication(" + app + ")\" value=\"X\" /><iframe class=\"appFrame\" src=\"apps/" + app + "/\"></iframe></div>";
 	       var parent=document.getElementById('appContainer');
 	       parent.innerHTML+=newElement;
+	       moveToFront(app);
 	       makeDraggable();
 	   }
 	   function closeApplication(app) {
