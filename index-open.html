@@ -1,76 +1,98 @@
 <html>
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.1/themes/base/jquery-ui.css"/>
     <!-- classes were from SparrOS Developer Team -->
-  <title>DremJS</title>
-	<!--<embed src="mopen.mp3" width="0" height="0" loop="false" autostart="true" hidden="true" />
-	<audio loop autoplay>
+    <title>DremJS</title>
+      <!--<embed src="mopen.mp3" width="0" height="0" loop="false" autostart="true" hidden="true" />
+      <audio loop autoplay>
 		Aw fiddle sticks. What now? (ERROR: 1040-0001)
 		Your browser doesn't support the AUDIO tag! Get a newer browser or update it
 		<source src="ambient.mp3" type="audio/mp3">
 	</audio>-->
     <style>
-    .start {
-      position: absolute;
-      left: 0px;
-      bottom: 0px;
-    }
-    .astart {
-      position: absolute;
-      left: 0px;
-      bottom: 50px;
+      .framewrap {
+        width:500px;
+        height:300px;
+    	padding:10px;
+        position: fixed;
+        top: 10px;
+        left: 10px;
+        background-color:#87CEEB;
       }
-    .cwhite {
-      color: white;
+      .appFrame {
+        width:99%;
+        height:93%;
+    	background-color:#FFFFFF;
       }
-	    .br1 {
-    position: absolute;
-    bottom: 8px;
-    right: 16px;
-    font-size: 12px;
-	    }
-	    .br2 {
-    position: absolute;
-    bottom: 22px;
-    right: 16px;
-    font-size: 12px;
-	    }
-		    .br3 {
-    position: absolute;
-    bottom: 36px;
-    right: 16px;
-    font-size: 12px;
-	    }
+      .start {
+        position: absolute;
+        left: 0px;
+        bottom: 0px;
+      }
+      .astart {
+        position: absolute;
+        left: 0px;
+        bottom: 50px;
+      }
+      .cwhite {
+        color: white;
+      }
+      .br1 {
+        position: absolute;
+        bottom: 8px;
+        right: 16px;
+        font-size: 12px;
+      }
+      .br2 {
+        position: absolute;
+        bottom: 22px;
+        right: 16px;
+        font-size: 12px;
+      }
+      .br3 {
+        position: absolute;
+        bottom: 36px;
+        right: 16px;
+        font-size: 12px;
+      }
       html { 
-      background: url(DremJS-Background.png) no-repeat center center fixed; 
-      -webkit-background-size: cover;
-      -moz-background-size: cover;
-      -o-background-size: cover;
-      background-size: cover;
-    }
-	a:link {
+        background: url(DremJS-Background.png) no-repeat center center fixed; 
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+      }
+      a:link {
+        color: black;
+	text-decoration: none;
+      }
+      a:visited {
 	color: black;
 	text-decoration: none;
-	    }
-	a:visited {
-	color: black;
-	text-decoration: none;
-	    }
-	    div {
-    background-color: gray;
-    padding: 300px;
-    border: 5px solid gray;
-    margin: 0;
-}
+      }
+      div {
+        background-color: gray;
+        padding: 300px;
+        border: 5px solid gray;
+        margin: 0;
+      }
   </style>
-  <body>
-    <p class="cwhite br3">DremJS Version 0.1.1b</p>
-    <p class="cwhite br2">Build 25</p>
-    <p class="cwhite br1">&copy; Innovation Inc.</p>
+  </head>
+  <body onload="makeDraggable()">
+   <div id="appContainer">
+	   
+   </div>
+   <p class="cwhite br3">DremJS Version 0.1.1b</p>
+   <p class="cwhite br2">Build 25</p>
+   <p class="cwhite br1">&copy; Innovation Inc.</p>
    <div class="start">
       <ul class="astart">
-        <dt><a onclick="openApplication(APP-About)" href="apps/About/index.html"><p><img src="apps/About/about.png" align="top"> About DremJS</p></a></dt>
-	<dt><a onclick="openApplication(APP-HowTo)" href="apps/HowTo/index.html"><p><img src="apps/HowTo/howto.png" align="top"> How to Install Applications</p></a></dt>
-	<dt><a onclick="openApplication(APP-DremJS_Market)" href="https://sparrdrem.github.io/DremJS-Market"><p><img src="apps/Market/market.png" align="top"> DremJS Market</p></a></dt>
-	<dt><a onclick="openApplication(APP-Debug)" href="apps/debug/debug.html"><p><img src="apps/debug/debug.png" align="top"> Report a Bug</p></a></dt>	      
+        <dt><a onclick="openApplication('About')"><p><img src="apps/About/about.png" align="top"> About DremJS</p></a></dt>
+	<dt><a onclick="openApplication('HowTo')"><p><img src="apps/HowTo/howto.png" align="top"> How to Install Applications</p></a></dt>
+	<dt><a onclick="openApplication('Market')"><p><img src="apps/Market/market.png" align="top"> DremJS Market</p></a></dt>
+	<dt><a onclick="openApplication('Debug')"><p><img src="apps/debug/debug.png" align="top"> Report a Bug</p></a></dt>	      
 	<!--Below is where remotely installed apps will start -->
 	
 	<hr />
@@ -78,5 +100,27 @@
       </ul>
 	      <a href="#"><p class="start" style="left:12px;">Start</p></a>
 	  </div>
+	   
+	   <script>
+        function makeDraggable() {
+            $(".framewrap")
+                .draggable()
+                .resizable();
+        }
+        function moveToFront(app) {
+            $('.framewrap').css('z-index', 1);
+	        $('#' + app).css('z-index', 9999);
+        }
+	    function openApplication(app) {
+	       var newElement="<div onclick=\"moveToFront(" + app + ")\" id=\"" + app + "\" class=\"framewrap\"><input type=\"button\" onclick=\"closeApplication(" + app + ")\" value=\"X\" /><iframe class=\"appFrame\" src=\"apps/" + app + "/\"></iframe></div>";
+	       var parent=document.getElementById('appContainer');
+	       parent.innerHTML+=newElement;
+	       makeDraggable();
+	   }
+	   function closeApplication(app) {
+	       var element = document.getElementById(app);
+           element.parentNode.removeChild(element);
+	   }
+    </script>
   </body>
 </html>
