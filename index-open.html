@@ -1,12 +1,12 @@
 <html>
     <!-- classes were from SparrOS Developer Team -->
   <title>DremJS</title>
-	<embed src="mopen.mp3" width="0" height="0" loop="false" autostart="true" hidden="true" />
+	<!--<embed src="mopen.mp3" width="0" height="0" loop="false" autostart="true" hidden="true" />
 	<audio loop autoplay>
 		Aw fiddle sticks. What now? (ERROR: 1040-0001)
 		Your browser doesn't support the AUDIO tag! Get a newer browser or update it
 		<source src="ambient.mp3" type="audio/mp3">
-	</audio>
+	</audio>-->
     <style>
     .start {
       position: absolute;
@@ -67,10 +67,10 @@
     <p class="cwhite br1">&copy; Innovation Inc.</p>
    <div class="start">
       <ul class="astart">
-        <dt><a href="apps/About/index.html"><p><img src="apps/About/about.png" align="top"> About DremJS</p></a></dt>
-	<dt><a href="apps/HowTo/index.html"><p><img src="apps/HowTo/howto.png" align="top"> How to Install Applications</p></a></dt>
-	<dt><a href="https://sparrdrem.github.io/DremJS-Market"><p><img src="apps/Market/market.png" align="top"> DremJS Market</p></a></dt>
-	<dt><a href="apps/debug/debug.html"><p><img src="apps/debug/debug.png" align="top"> Report a Bug</p></a></dt>	      
+        <dt><a onclick="openApplication(APP-About)" href="apps/About/index.html"><p><img src="apps/About/about.png" align="top"> About DremJS</p></a></dt>
+	<dt><a onclick="openApplication(APP-HowTo)" href="apps/HowTo/index.html"><p><img src="apps/HowTo/howto.png" align="top"> How to Install Applications</p></a></dt>
+	<dt><a onclick="openApplication(APP-DremJS_Market)" href="https://sparrdrem.github.io/DremJS-Market"><p><img src="apps/Market/market.png" align="top"> DremJS Market</p></a></dt>
+	<dt><a onclick="openApplication(APP-Debug)" href="apps/debug/debug.html"><p><img src="apps/debug/debug.png" align="top"> Report a Bug</p></a></dt>	      
 	<!--Below is where remotely installed apps will start -->
 	
 	<hr />
