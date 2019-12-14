@@ -92,7 +92,7 @@
       }
   </style>
   </head>
-  <body onload="makeDraggable()">
+  <body onload="initAgendaWM()">
    <p class="cwhite br3">DremJS Version 0.1.1b</p>
    <p class="cwhite br2">Build 25</p>
    <p class="cwhite br1">&copy; Innovation Inc.</p>
@@ -112,15 +112,15 @@
    <div id="appContainer">
 	   
    </div>
-   <div class="taskbar" onload="startTime()">
+   <div class="taskbar">
      <div class="cwhite" style="text-align:left" id="txt"></div> <a onclick="openApplication('About')"><img class="cent" src="apps/About/about.png"> |</a>
    </div>
 	   
 	   <script>
-        /*function initAgendaWM() {
+        function initAgendaWM() {
 		makeDraggable();
-		//startTime();
-	}*/
+		startTime();
+	}
         function makeDraggable() {
             $(".framewrap")
                 .draggable()
