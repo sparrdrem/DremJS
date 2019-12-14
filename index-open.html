@@ -94,7 +94,7 @@
   </head>
   <body onload="initAgendaWM()">
    <p class="cwhite br3">DremJS Version 0.1.2b</p>
-   <p class="cwhite br2">Build 30</p>
+   <p class="cwhite br2">Build 31</p>
    <p class="cwhite br1">&copy; Innovation Inc.</p>
    <div class="start startgray">
       <ul class="astart">
@@ -131,7 +131,9 @@
 	        $('#' + app).css('z-index', 9999);
         }
 	    function openApplication(app) {
-	       var newElement="<div onclick=\"moveToFront('" + app + "')\" id='" + app + "' class='framewrap'><input type='button' onclick=\"closeApplication('" + app + "')\" value='X' /><iframe class='appFrame' src='apps/" + app + "/'></iframe></div>";
+	       while ($('#' + i).length)
+	           i++;
+	       var newElement="<div onclick=\"moveToFront('" + i + "')\" id='" + i + "' class='framewrap'><input type='button' onclick=\"closeApplication('" + i + "')\" value='X' /><iframe class='appFrame' src='apps/" + app + "/'></iframe></div>";
 	       var parent=document.getElementById('appContainer');
 	       parent.innerHTML+=newElement;
 	       moveToFront(app);
