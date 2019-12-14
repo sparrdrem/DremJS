@@ -83,6 +83,9 @@
 	top: 4px;
       }
       .taskbar {
+	position: absolute;
+        top: 0;
+	right: 0;
 	width: 100%;
 	height: 8px;
       }
@@ -92,9 +95,6 @@
    <p class="cwhite br3">DremJS Version 0.1.1b</p>
    <p class="cwhite br2">Build 25</p>
    <p class="cwhite br1">&copy; Innovation Inc.</p>
-   <div class="taskbar" onload="startTime()">
-     <a onclick="openApplication('About')"><img class="cent" src="apps/About/about.png"> |</a>
-   </div>
    <div class="start startgray">
       <ul class="astart">
         <dt><a onclick="openApplication('About')"><p><img src="apps/About/about.png" align="top"> About DremJS</p></a></dt>
@@ -110,6 +110,9 @@
 	  </div>
    <div id="appContainer">
 	   
+   </div>
+   <div class="taskbar" onload="startTime()">
+     <a onclick="openApplication('About')"><img class="cent" src="apps/About/about.png"> |</a>
    </div>
 	   
 	   <script>
