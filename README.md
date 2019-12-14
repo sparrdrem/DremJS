@@ -1,14 +1,12 @@
 # DremJS
-A web OS featuring 3rd party support, an IDE (coming soon!), and much more (coming soon too :v).
+A multitasking (as of 0.1.2b) web OS featuring 3rd party support, an IDE (coming soon!), and much more (coming soon too.).
 
-It's free and completly hosted on GitHub. No more building needed!!!
+DremJS is free and completly hosted on GitHub/a web server. No more building needed!
 Just download this and upload it to your own web server (as this project is open source and licensed under the terms of the GNU General Public License v3). Just give credit for the original source code.
-
-No need for JQuery!!! JQuery is already embedded in DremJS. Applications that hardcode a location for JQuery should be changed to 'jquery/<the jquery version it uses'.
 
 Alternatively, you can fork this repository and go to the following site after setting up GitHub pages:
 <code>yourusername.github.io/DremJS</code>
-However, this is depreciated as updating and installing apps is much harder.
+However, this is not recommended as updating and installing apps is much harder.
 
 # DremJS Updates Frequently
 ## How to manualy update your DremJS Desktop
@@ -25,6 +23,8 @@ Copy your DremJS Desktop application list with the new application list in the n
 Note: You should delete any duplicate application listings!
 
 And that's it! Now you have the latest version of DremJS installed on your web server!
+
+A system to update with a single click of a button and to install applications from DremJS itself is coming soon.
 <br />
 <br />
 &copy; Innovation Inc. 2019
