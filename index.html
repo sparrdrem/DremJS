@@ -1,38 +1,193 @@
-<!--
-    ____                          _______
-   / __ \________  ____ ___      / / ___/
-  / / / / ___/ _ \/ __ `__ \__  / /\__ \ 
- / /_/ / /  /  __/ / / / / / /_/ /___/ / 
-/_____/_/   \___/_/ /_/ /_/\____//____/  
-                                         
--->
-
 <html>
-    	<!-- classes were from SparrOS Developer Team -->
-  	<title>DremJS</title>
 	<head>
-		<script src="jquery/jquery-3.3.1.min.js"></script>
-		<link rel="icon" href="favicon.ico">
-		<embed src="startup.mp3" width="0" height="0" loop="true" autostart="true" hidden="true" />
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+		<link rel="stylesheet" type="text/css" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.7.1/themes/base/jquery-ui.css"/>
+		<!-- classes were from SparrOS Developer Team -->
+    		<title>DremJS</title>
+      <!--<embed src="mopen.mp3" width="0" height="0" loop="false" autostart="true" hidden="true" />
+      <audio loop autoplay>
+		Aw fiddle sticks. What now? (ERROR: 1040-0001)
+		Your browser doesn't support the AUDIO tag! Get a newer browser or update it
+		<source src="ambient.mp3" type="audio/mp3">
+	</audio>-->
     		<style>
-    			.start {
-      				position: absolute;
-      				left: 0px;
-      				bottom: 0px;
-    			}
-    			.astart {
-      				position: absolute;
-      				left: 0px;
-      				bottom: 50px;
+      			.framewrap {
+        			width:500px;
+        			height:300px;
+    				padding:10px;
+        			position: fixed;
+        			top: 50px;
+        			left: 10px;
+        			background-color:#87CEEB;
       			}
-    			.cwhite {
-      				color: white;
-      			}	
-  		</style>
-	</head>
-	<body>
-		<center>
-			<iframe src="index-open.html" frameborder="0" style="height:95%;width:100%"></iframe>
-		</center>
+      			.appFrame {
+        			width:99%;
+        			height:93%;
+    				background-color:#FFFFFF;
+      			}
+      			.start {
+        			position: absolute;
+        			left: 0px;
+        			bottom: 0px;
+      			}
+      			.astart {
+        			position: absolute;
+        			left: 0px;
+        			bottom: 50px;
+      			}
+      			.cwhite {
+        			color: white;
+     			}
+      			.br1 {
+        			position: absolute;
+        			bottom: 8px;
+        			right: 16px;
+        			font-size: 12px;
+      			}
+      			.br2 {
+        			position: absolute;
+        			bottom: 22px;
+        			right: 16px;
+        			font-size: 12px;
+      			}
+      			.br3 {
+        			position: absolute;
+        			bottom: 36px;
+        			right: 16px;
+        			font-size: 12px;
+      			}
+      			html { 
+        			background: url(DremJS-Background.png) no-repeat center center fixed; 
+        			-webkit-background-size: cover;
+        			-moz-background-size: cover;
+        			-o-background-size: cover;
+        			background-size: cover;
+      			}
+			a:link {
+        			color: black;
+				text-decoration: none;
+      			}
+      			a:visited {
+				color: black;
+				text-decoration: none;
+      			}
+      			.startgray {
+        			background-color: gray;
+        			padding: 300px;
+        			border: 5px solid gray;
+        			margin: 0;
+      			}
+      			.cent {
+        			position: relative;
+				top: 4px;
+      			}
+      			.taskbar {
+				background-color: black;
+				position: absolute;
+        			top: 0;
+				right: 0;
+				width: 100%;
+				height: 42px;
+     			}
+		</style>
+  	</head>
+  	<body onload="initAgendaWM()">
+   		<p class="cwhite br3">DremJS Version 0.1.2b</p>
+   		<p class="cwhite br2">Build 31</p>
+   		<p class="cwhite br1">&copy; Innovation Inc.</p>
+   		<div class="start startgray">
+      			<ul class="astart">
+        			<dt><a onclick="openApplication('About', 800, 500)"><p><img src="apps/About/about.png" align="top"> About DremJS</p></a></dt>
+				<dt><a onclick="openApplication('HowTo', 800, 500)"><p><img src="apps/HowTo/howto.png" align="top"> How to Install Applications</p></a></dt>
+				<dt><a onclick="openApplication('Market', 'max', 'max')"><p><img src="apps/Market/market.png" align="top"> DremJS Market</p></a></dt>
+				<dt><a onclick="openApplication('debug')"><p><img src="apps/debug/debug.png" align="top"> Report a Bug</p></a></dt>	      
+				<!--Below is where remotely installed apps will start -->
+	
+				<hr />
+				<dt><a target="_top" href="shuttingdown.html"><p><img src="shutdown.png" align="top" style="width:16px;height:16px;"> Shutdown DremJS</p></dt>
+      			</ul>
+	      		<a href="#"><p class="start" style="left:12px;">Start</p></a>
+	  	</div>
+   		<div id="appContainer">
+	   
+   		</div>
+   		<div class="taskbar">
+     			<div class="cwhite" style="text-align:left" id="txt"></div> <a onclick="openApplication('About')"><img class="cent" src="apps/About/about.png"> |</a>
+   		</div>
+	   
+		<script>
+			function initAgendaWM() {
+				startTime();
+				makeDraggable();
+			}
+			function startTime() {
+    				var today = new Date();
+    				var h = today.getHours();
+    				var m = today.getMinutes();
+    				var s = today.getSeconds();
+    				m = checkTime(m);
+    				s = checkTime(s);
+    				document.getElementById('txt').innerHTML =
+    				h + ":" + m + ":" + s;
+    				var t = setTimeout(startTime, 500);
+			}
+			function checkTime(i) {
+    				if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
+    				return i;
+			}
+			function makeDraggable() {
+            			$(".framewrap")
+                		.draggable()
+                		.resizable();
+		        } // Makes all applications with the framewrap class draggable. Has to be ran every time applications are launched or things get sticky.
+
+        		function moveToFront(app) {
+            			$('.framewrap').css('z-index', 1);
+	    			$('#' + app).css('z-index', 9999);
+        		} // Move a clicked application to the front
+
+			function openApplication(app, width, height) {
+	                // Set width and height as default if one is <=-1
+            			if (width <= -1 || height <= -1 || width == undefined || height == undefined) {
+                			width="500";
+                			height="300";
+            			}
+            			var i = 0;
+            			// Get the first available application ID.
+            			while ($('#' + i).length)
+                			i++;
+            		/*
+            		This is just the following as a string:
+            		<div onclick=moveToFront('[windowID]') id='[windowID]' class='framewrap' style='width:[width]px; height=[height]px'>
+                		<input type='button' onclick="closeApplication('[windowID]')" value='X" />
+                		<iframe class='appFrame' src='apps/[application name]'></iframe>
+            		</div>
+            		[windowID] is replaced with i (defined above)
+	                [application name] is replaced with parameter "app" (used to determine the application name to open).
+
+	                The app parameter points to a subdirectory called apps. This means if you were to run openApplication(foo), it will attempt to
+				open an application stored at apps/foo/
+
+            		Quite frustrating to work with, but it works. I'll make it fancier later, but right now it is good enough.
+            		*/
+            			var newElement="<div onclick=\"moveToFront('" + i + "')\" id='" + i + "' class='framewrap' style='width:" + width + "px; height:" + height + "px'><input type='button' onclick=\"closeApplication('" + i + "')\" value='X' /><input type='button' onclick=\"maximizeApplication('" + i + "')\" value='\u25A1' /><iframe class='appFrame' src='apps/" + app + "/'></iframe></div>";
+            			var parent=document.getElementById('appContainer');
+            			parent.innerHTML+=newElement;
+				if (width == "max" || height == "max")
+					maximizeApplication(i);
+            			moveToFront(i);
+            			makeDraggable();
+		        } // Opens an application.
+
+			function closeApplication(id) {
+           			var application = document.getElementById(id);
+           			application.parentNode.removeChild(application);
+        		} // Closes an application.
+
+       			function maximizeApplication(id) {
+        			document.getElementById(id).setAttribute('style', "height: 93%; width: 99%; top: 40px; left: 0px");
+		        }
+		</script>
 	</body>
 </html>
