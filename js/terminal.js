@@ -1,4 +1,6 @@
 var util = util || {};
+var infinateLoopDetect;
+
 util.toArray = function(list) {
   return Array.prototype.slice.call(list || [], 0);
 };
@@ -22,7 +24,7 @@ var Terminal = Terminal || function(cmdLineContainer, outputContainer) {
   var output_ = document.querySelector(outputContainer);
 
   const CMDS_ = [
-    'cat', 'clear', 'clock', 'date', 'echo', 'help', 'uname', 'whoami', 'cmd_fm',
+    'cat', 'clear', 'clock', 'date', 'echo', 'help', 'uname', 'whoami', 'cmd_fm', 'procman',
   ];
   
   var fs_ = null;
@@ -103,7 +105,7 @@ var Terminal = Terminal || function(cmdLineContainer, outputContainer) {
         var cmd = args[0].toLowerCase();
         args = args.splice(1); // Remove cmd from arg list.
       }
-
+      //infinateLoopDetect = setTimeout(function(){ alert("Infinate Loop!"); }, 10000);
       switch (cmd) {
         case 'cat':
           var url = args.join(' ');
@@ -117,7 +119,7 @@ var Terminal = Terminal || function(cmdLineContainer, outputContainer) {
                return '&#'+i.charCodeAt(0)+';';
             });
             output('<pre>' + encodedStr + '</pre>');
-          });          
+          });
           break;
         case 'clear':
           output_.innerHTML = '';
@@ -152,15 +154,55 @@ var Terminal = Terminal || function(cmdLineContainer, outputContainer) {
         case 'spin':
             show_image('spin.gif', 100, 100, 'Spinny');
           break;
+        case 'procman':
+            var arguments = args.join(' ');
+            if (!arguments || (args[0] != "list" && args[0] != "kill")) {
+                output('Process Manager (procman) help');
+                output('procman kill - kill a process');
+                output('procman list - list all processes');
+                break;
+            } else if (args[0] == "list") {
+                var i = 0;
+                output('ID        Name');
+                while (i <= 1000) {
+                    if (parent.idExists(i))
+                        output(i + "         " + parent.idExists(i));
+                    i++;
+                }
+                break;
+            } else if (args[0] == "kill") {
+                if (!args[1]) {
+                    output("fatal: no application ID provided!");
+                } else if (parent.idExists(args[1])) {
+                    output("Killing application with ID " + args[1]);
+                    parent.closeApplication(args[1])
+                } else {
+                    output("fatal: application ID " + args[1] + " does not exist.");
+                }
+            }
         default:
-          if (cmd) {
-            output(cmd + ': command not found');
+          var notFoundFlag = 0;
+          if (cmd != undefined) {
+              for (i = 0; i < CMDS_.length; i++)
+                  if (cmd != CMDS_[i])
+                      notFoundFlag = 1;
+                  else {
+                      notFoundFlag = 0;
+                      i = CMDS_.length;
+                  }
+          } else {
+              cmd = "";
+              notFoundFlag = 1;
+          }
+          if (notFoundFlag == 1) {
+              output(cmd + ': command not found');
           }
       };
 
       window.scrollTo(0, getDocHeight_());
       this.value = ''; // Clear/setup line for next input.
     }
+    //clearTimeout(infinateLoopDetect);
   }
 
   //
