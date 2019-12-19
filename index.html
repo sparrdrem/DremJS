@@ -80,114 +80,154 @@
       			}
       			.cent {
         			position: relative;
-				top: 4px;
-      			}
+				    top: 4px;
+                }
       			.taskbar {
-				background-color: black;
-				position: absolute;
-        			top: 0;
-				right: 0;
-				width: 100%;
-				height: 42px;
-     			}
+                    background-color: black;
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                    width: 100%;
+                }
+                .taskbarTime {
+                    height: 42px;
+                    float: left;
+                }
+                .taskbarApps {
+                    text-align: center;
+                    float: left;
+                    margin-left: 5px;
+                    margin-top: 2px;
+                }
 		</style>
   	</head>
   	<body onload="initAgendaWM()">
-   		<p class="cwhite br3">DremJS Version 0.1.2b</p>
-   		<p class="cwhite br2">Build 31</p>
+   		<p class="cwhite br2">DremJS Version 0.1.4b</p>
    		<p class="cwhite br1">&copy; Innovation Inc.</p>
    		<div class="start startgray">
       			<ul class="astart">
-        			<dt><a onclick="openApplication('About', 800, 500)"><p><img src="apps/About/about.png" align="top"> About DremJS</p></a></dt>
-				<dt><a onclick="openApplication('HowTo', 800, 500)"><p><img src="apps/HowTo/howto.png" align="top"> How to Install Applications</p></a></dt>
-				<dt><a onclick="openApplication('Market', 'max', 'max')"><p><img src="apps/Market/market.png" align="top"> DremJS Market</p></a></dt>
-				<dt><a onclick="openApplication('debug')"><p><img src="apps/debug/debug.png" align="top"> Report a Bug</p></a></dt>	      
-				<!--Below is where remotely installed apps will start -->
+        			<dt><a onclick="openApplication('About', 800, 500, 'about.png')"><p><img src="apps/About/about.png" align="top"> About DremJS</p></a></dt>
+				    <dt><a onclick="openApplication('HowTo', 800, 500, 'howto.png')"><p><img src="apps/HowTo/howto.png" align="top"> How to Install Applications</p></a></dt>
+    				<dt><a onclick="openApplication('Market', 'max', 'max', 'market.png')"><p><img src="apps/Market/market.png" align="top"> DremJS Market</p></a></dt>
+	       			<dt><a onclick="openApplication('debug', -1, -1, 'debug.png')"><p><img src="apps/debug/debug.png" align="top"> Report a Bug</p></a></dt>	      
+			     	<!--Below is where remotely installed apps will start -->
 	
-				<hr />
-				<dt><a target="_top" href="shuttingdown.html"><p><img src="shutdown.png" align="top" style="width:16px;height:16px;"> Shutdown DremJS</p></dt>
-      			</ul>
-	      		<a href="#"><p class="start" style="left:12px;">Start</p></a>
+				    <hr />
+				    <dt><a target="_top" href="shuttingdown.html"><p><img src="shutdown.png" align="top" style="width:16px;height:16px;"> Shutdown DremJS</p></dt>
+      		    </ul>
+                <a href="#"><p class="start" style="left:12px;">Start</p></a>
 	  	</div>
    		<div id="appContainer">
+        <!-- This is the taskbar -->
+        <div id="taskbar" class="taskbar">
+            <div id="taskbarTime" class="taskbarTime">
+                <!-- Add apps here -->
+                <div class="cwhite" style="text-align:left" id="txt"></div> <a onclick="openApplication('About', 800, 500, 'about.png')"><img src="apps/About/about.png"> |</a>
+                </div>
+                <div id="taskbarApps" class="taskbarApps">
+            
+                </div>
+        </div>
+    </div>
 	   
-   		</div>
-   		<div class="taskbar">
-     			<div class="cwhite" style="text-align:left" id="txt"></div> <a onclick="openApplication('About')"><img class="cent" src="apps/About/about.png"> |</a>
-   		</div>
-	   
-		<script>
-			function initAgendaWM() {
-				startTime();
-				makeDraggable();
-			}
-			function startTime() {
-    				var today = new Date();
-    				var h = today.getHours();
-    				var m = today.getMinutes();
-    				var s = today.getSeconds();
-    				m = checkTime(m);
-    				s = checkTime(s);
-    				document.getElementById('txt').innerHTML =
-    				h + ":" + m + ":" + s;
-    				var t = setTimeout(startTime, 500);
-			}
-			function checkTime(i) {
-    				if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
-    				return i;
-			}
-			function makeDraggable() {
-            			$(".framewrap")
-                		.draggable()
-                		.resizable();
-		        } // Makes all applications with the framewrap class draggable. Has to be ran every time applications are launched or things get sticky.
+    <script>
+        function initAgendaWM() {
+			startTime();
+			makeDraggable();
+		} // Initialize Agenda
+        
+		function startTime() {
+    		var today = new Date();
+    		var h = today.getHours();
+    		var m = today.getMinutes();
+    		var s = today.getSeconds();
+    		m = checkTime(m);
+    		s = checkTime(s);
+    		document.getElementById('txt').innerHTML =
+    		h + ":" + m + ":" + s;
+    		var t = setTimeout(startTime, 500);
+		} // Tick tock, Mr. Wick...
+        
+		function checkTime(i) {
+    		if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
+    		return i;
+		}
+        
+        function makeDraggable() {
+            $(".framewrap")
+                .draggable()
+                .resizable();
+        } // Makes all applications with the framewrap class draggable. Has to be ran every time applications are launched or things get sticky.
 
-        		function moveToFront(app) {
-            			$('.framewrap').css('z-index', 1);
-	    			$('#' + app).css('z-index', 9999);
-        		} // Move a clicked application to the front
+        function moveToFront(app) {
+            $('.framewrap').css('z-index', 1);
+	        $('#' + app).css('z-index', 9999);
+        } // Move a clicked application to the front
 
-			function openApplication(app, width, height) {
-	                // Set width and height as default if one is <=-1
-            			if (width <= -1 || height <= -1 || width == undefined || height == undefined) {
-                			width="500";
-                			height="300";
-            			}
-            			var i = 0;
-            			// Get the first available application ID.
-            			while ($('#' + i).length)
-                			i++;
-            		/*
-            		This is just the following as a string:
-            		<div onclick=moveToFront('[windowID]') id='[windowID]' class='framewrap' style='width:[width]px; height=[height]px'>
-                		<input type='button' onclick="closeApplication('[windowID]')" value='X" />
-                		<iframe class='appFrame' src='apps/[application name]'></iframe>
-            		</div>
-            		[windowID] is replaced with i (defined above)
-	                [application name] is replaced with parameter "app" (used to determine the application name to open).
+	   function openApplication(app, width, height, appIcon) {
+           // Set width and height as default if one is <=-1
+           if (width <= -1 || height <= -1 || width == undefined || height == undefined) {
+               width="500";
+               height="300";
+           }
+           var i = 0;
+           // Get the first available application ID.
+           while ($('#' + i).length)
+               i++;
+           /*
+           This is just the following as a string:
+           <div onclick=moveToFront('[windowID]') id='[windowID]' class='framewrap' style='width:[width]px; height=[height]px'>
+               <input type='button' onclick="closeApplication('[windowID]')" value='X' />
+               <input type='button' onclick="maximizeApplication('[windowID]')" value='\u25A1' />
+               <input type='button' onclick="minimizeApplication('[windowID]')" value='_' />
+               <iframe class='appFrame' src='apps/[application name]'></iframe>
+           </div>
+           [windowID] is replaced with i (defined above)
+           [application name] is replaced with parameter "app" (used to determine the application name to open).
 
-	                The app parameter points to a subdirectory called apps. This means if you were to run openApplication(foo), it will attempt to
-				open an application stored at apps/foo/
+           The app parameter points to a subdirectory called apps. This means if you were to run openApplication(foo), it will attempt to open an
+           Application stored at apps/foo/
 
-            		Quite frustrating to work with, but it works. I'll make it fancier later, but right now it is good enough.
-            		*/
-            			var newElement="<div onclick=\"moveToFront('" + i + "')\" id='" + i + "' class='framewrap' style='width:" + width + "px; height:" + height + "px'><input type='button' onclick=\"closeApplication('" + i + "')\" value='X' /><input type='button' onclick=\"maximizeApplication('" + i + "')\" value='\u25A1' /><iframe class='appFrame' src='apps/" + app + "/'></iframe></div>";
-            			var parent=document.getElementById('appContainer');
-            			parent.innerHTML+=newElement;
-				if (width == "max" || height == "max")
-					maximizeApplication(i);
-            			moveToFront(i);
-            			makeDraggable();
-		        } // Opens an application.
+           Quite frustrating to work with, but it works. I'll make it fancier later, but right now it is good enough.
+           */
+            var application="<div onclick=\"moveToFront('" + i + "')\" name='" + app + "' id='" + i + "' class='framewrap' style='width:" + width + "px; height:" + height + "px'><input type='button' onclick=\"closeApplication('" + i + "')\" value='X' /><input type='button' onclick=\"maximizeApplication('" + i + "')\" value='\u25A1' /><input type='button' onclick=\"minimizeApplication('" + i + "')\" value='_' /><iframe class='appFrame' src='apps/" + app + "/'></iframe></div>";
+            var taskbarApp="<div id='task" + i + "' onclick=\"minimizeApplication('" + i + "')\" class='taskbarApps'><img src='apps/" + app + "/" + appIcon + "' style='width:32px;height:32px' align='middle' /></div>";
+            var parent=document.getElementById('appContainer');
+            parent.insertAdjacentHTML('beforeend', application);
+            var parent=document.getElementById('taskbarApps');
+            parent.insertAdjacentHTML('beforeend', taskbarApp);
+	        if (width == "max" || height == "max")
+       	        maximizeApplication(i);
+            moveToFront(i);
+            makeDraggable();
+        } // Opens an application.
 
-			function closeApplication(id) {
-           			var application = document.getElementById(id);
-           			application.parentNode.removeChild(application);
-        		} // Closes an application.
+	    function closeApplication(id) {
+            var application = document.getElementById(id);
+            var taskbarApp = document.getElementById('task' + id);
+            application.parentNode.removeChild(application);
+            taskbarApp.parentNode.removeChild(taskbarApp);
+        } // Closes an application.
 
-       			function maximizeApplication(id) {
-        			document.getElementById(id).setAttribute('style', "height: 93%; width: 99%; top: 40px; left: 0px");
-		        }
-		</script>
+        function maximizeApplication(id) {
+            document.getElementById(id).setAttribute('style', "height: 92%; width: 99%; top: 42px; left: 0px");
+        } // Maximize application
+        
+        function minimizeApplication(id) {
+            var application = document.getElementById(id);
+            if (application.style.display === "none") {
+                application.style.display = "block";
+            } else {
+                application.style.display = "none";
+            }
+        } // Minimize application
+        
+        function idExists(id) {
+            if ($('#' + id).length)
+                return $('#' + id).attr('name');
+            else
+                return false;
+        } // Check if an ID exists
+    </script>
 	</body>
 </html>
