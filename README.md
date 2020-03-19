@@ -27,4 +27,4 @@ And that's it! Now you have the latest version of DremJS installed on your web s
 A system to update with a single click of a button and to install applications from DremJS itself is coming soon.
 <br />
 <br />
-&copy; Innovation Inc. 2019
+&copy; Innovation Inc. 2020
