@@ -8,6 +8,23 @@ var modules = [];
 var moduleCode = [];
 var modInstall;
 var firstLine = "";
+var theme = getCookie('terminalTheme');
+
+function getCookie(cname) {
+	var name = cname + "=";
+	var decodedCookie = decodeURIComponent(document.cookie);
+	var ca = decodedCookie.split(';');
+	for(var i = 0; i <ca.length; i++) {
+		var c = ca[i];
+		while (c.charAt(0) == ' ') {
+			c = c.substring(1);
+		}
+		if (c.indexOf(name) == 0) {
+			return c.substring(name.length, c.length);
+		}
+	}
+	return "";
+}
 
 util.toArray = function(list) {
   return Array.prototype.slice.call(list || [], 0);
@@ -32,7 +49,7 @@ var Terminal = Terminal || function(cmdLineContainer, outputContainer) {
   var output_ = document.querySelector(outputContainer);
 
   cmds = [
-    'cat', 'clear', 'clock', 'date', 'echo', 'help', 'uname', 'cmd_fm', 'procman', 'insmod', 'rmmod'
+    'cat', 'clear', 'clock', 'date', 'echo', 'help', 'uname', 'cmd_fm', 'procman', 'insmod', 'rmmod', 'settheme'
   ];
   
   var fs_ = null;
@@ -250,7 +267,7 @@ var Terminal = Terminal || function(cmdLineContainer, outputContainer) {
 			    if (firstLine == "type immediate") {
 			        output('[insmod] module type is immediate');
 			        moduleTypeFlag = 1;
-				output('[insmod] fatal: module type "immediate" not implimented. Maybe 0.1.5b?');
+				output('[insmod] fatal: module type "immediate" not implimented. Maybe 0.1.6b?');
 			    } else if (firstLine == "type terminal") {
 			        output('[insmod] module type is terminal');
 			        moduleTypeFlag = 2;
@@ -269,13 +286,13 @@ var Terminal = Terminal || function(cmdLineContainer, outputContainer) {
 			    } else if (firstLine == "type parentscript") {
                                 output('[insmod] module type is parentscript');
                                 moduleTypeFlag = 3;
-				output('[insmod] fatal: module type "parentscript" not implimented. Maybe 0.1.5b?');
+				output('[insmod] fatal: module type "parentscript" not implimented. Maybe 0.1.6b?');
 			    } else {
                                 output('[insmod] fatal: the input file is not a DremJS Module or DremJS Module Script');
 				moduleTypeFlag = 0;
                             }
 			    /*if (moduleTypeFlag = 1) {
-			        output('[insmod] fatal: not implimented. Maybe 0.1.5b?');
+			        output('[insmod] fatal: not implimented. Maybe 0.1.6b?');
 			    } else if */
 			});
                         
@@ -284,7 +301,7 @@ var Terminal = Terminal || function(cmdLineContainer, outputContainer) {
                         break;
                     } else if ((args[1].substring(args[1].length-6)) == ".djsms") {
                         //output('Running module installation script at ' + args[1] + '...');
-			output('[insmod] fatal: module installation scripts are not implimented. Maybe 0.1.5b?');
+			output('[insmod] fatal: module installation scripts are not implimented. Maybe 0.1.6b?');
                     } else {
                         output('[insmod] fatal: the input file is not a DremJS Module or DremJS Module Script');
                         break;
@@ -298,8 +315,23 @@ var Terminal = Terminal || function(cmdLineContainer, outputContainer) {
             }
         break;
         case 'rmmod':
-            output('[rmmod] fatal: not implimented. Maybe 0.1.5b?');
+            output('[rmmod] fatal: not implimented. Maybe 0.1.6b?');
         break;
+		case 'settheme':
+			if (args[0] == 0 || args[0] == "dark") {
+				document.cookie = "terminalTheme=0";
+				output('Terminal theme updated to dark mode. Please restart the terminal for changes to take effect.')
+			} else if (args[0] == 1 || args[0] == "lite") {
+				document.cookie = "terminalTheme=1";
+				output('Terminal theme updated to lite mode. Please restart the terminal for changes to take effect.')
+			} else {
+				output('Usage:');
+				output('settheme <theme>');
+				output('Possible themes:');
+				output('0 - dark');
+				output('1 - lite');
+			}
+		break;
         default:
 	  
           var notFoundFlag = 1;
@@ -384,7 +416,11 @@ var Terminal = Terminal || function(cmdLineContainer, outputContainer) {
   //
   return {
     init: function() {
-      output('<img align="left" src="termlogo.png" width="100" height="100" style="padding: 0px 10px 20px 0px"><h2 style="letter-spacing: 4px">DremJS Terminal</h2><p>' + new Date() + '</p><p>Enter "help" for more information.</p>');
+		if(theme == 0) {
+			output('<img align="left" src="termlogo-dark.png" width="100" height="100" style="padding: 0px 10px 20px 0px"><h2 style="letter-spacing: 4px">DremJS Terminal</h2><p>' + new Date() + '</p><p>Enter "help" for more information.</p>');
+		} else {
+			output('<img align="left" src="termlogo-lite.png" width="100" height="100" style="padding: 0px 10px 20px 0px"><h2 style="letter-spacing: 4px">DremJS Terminal</h2><p>' + new Date() + '</p><p>Enter "help" for more information.</p>');
+		}
     },
     output: output
   }

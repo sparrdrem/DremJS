@@ -1,106 +1,135 @@
 <html>
   <head>
   <title>About DremJS</title>
-  <embed src="ambient.mp3" width="0" height="0" loop="true" autostart="true" hidden="true">
+  <style type="text/css">
+	body {
+		font-family: Calibri;
+	}
+	.container {
+		width: 80%;
+		margin: auto;
+		padding: 0px;
+	}
+	.left {
+		width: 30%;
+		float: left;
+	}
+	.right {
+		margin-left: 5%;
+	}
+  </style>
   </head>
   <body>
-    <h1>About DremJS</h1>
-    <h2>Version: 0.1.4b</h2>
-    <h2>Agenda WM 0.1.0b</h2>
-    <p>Note: If something isn't right with your desktop, try reloading the frame! If that doesn't work, clear your browsers cache!</p>
-    <p>Another Note: When loading an app or clicking the Start button, flickering is normal. This is just because the IFrame is loading the application.</p>
-    <p>Changelog:</p>
-    <p>Version 0.1.4b</p>
-    <p>+Added ProcMan (Process Manager) to the terminal which allows you to list all processes or kill a process</p>
-    <p>+Added insmod (Install Module). It's on its first prototype so it's not able to do much.</p>
-    <p>~Separated Terminal from Debug and made it accessible when not in Debug mode.</p>
-    <p>~Updated Terminal image.</p>
-    <p>~Probable a ton more changes that I forgot about before I went on a break</p>
-    <p>~Updated to Agenda WM 0.1.0b, which adds some new features and tweaks including, but not limited to:</p>
-    <p>    ~Made Agenda its own .js file</p>
-    <p>    ~Moved the taskbar that was originally in DremJS into Agenda WM</p>
-    <p>    +Added the ability to minimize and restore applications (hence the taskbar move)</p>
-    <p>Version 0.1.3b</p>
-    <p>~Updated to Agenda WM 0.0.4b, which adds some new features and tweaks including, but not limited to:
-    <p>    +A maximize button</p>
-    <p>    +The ability to launch applications with a specific size.</p>
-    <p>Version 0.1.2b (Hotfix 1)</p>
-    <p>~Fixed a bug where multiple instances of the same app will have the same (supposed to be) unique identifier, which caused problems with closing and layering.</p> 
-    <p>Version 0.1.2b</p>
-    <p>This is a very important and large release for DremJS!</p>
-    <p>We are going to hard code the start menu to stay open at all times for a while until we care enough to reimpliment it better.</p>
+  <section class="container">
+		<div class="left">
+			<img src="logo.png" style="width:128px;height:128px" />
+		</div>
+		<div class="right">
+			<h1>About DremJS</h1>
+			<h2>Version: 0.1.5b</h2>
+			<h2>Agenda WM 0.1.0b</h2>
+		</div>
+	</section>
+    <p>Changelog:<br />
+    Version 0.1.5b<br />
+    +Readded the start menu<br />
+	+A lite theme for the terminal, if that's your thing. You can toggle the theme with "settheme".<br />
+    ~DremJS went on a strict diet and lost about 15MBs<br />
+	~Changed DremJS's font to Calibri<br />
+	~Overhauled the About application a lot.
+	~General system stability improvements to enhance the user's experience.
+	NOTE: Even though DremJS's font is Calibri, it does NOT mean that applications will automagically change to Calibri. Developers need to set their own font if they want a custom one.<br /><br />
+    Version 0.1.4b<br />
+    +Added ProcMan (Process Manager) to the terminal which allows you to list all processes or kill a process<br />
+    +Added insmod (Install Module). It's on its first prototype so it's not able to do much.<br />
+    ~Separated Terminal from Debug and made it accessible when not in Debug mode.<br />
+    ~Updated Terminal image.<br />
+    ~Probable a ton more changes that I forgot about before I went on a break<br />
+    ~Updated to Agenda WM 0.1.0b, which adds some new features and tweaks including, but not limited to:<br />
+        ~Made Agenda its own .js file<br />
+        ~Moved the taskbar that was originally in DremJS into Agenda WM<br />
+        +Added the ability to minimize and restore applications (hence the taskbar move)<br /><br />
+    Version 0.1.3b<br />
+    ~Updated to Agenda WM 0.0.4b, which adds some new features and tweaks including, but not limited to:<br />
+        +A maximize button<br />
+        +The ability to launch applications with a specific size.<br /><br />
+    Version 0.1.2b (Hotfix 1)<br />
+    ~Fixed a bug where multiple instances of the same app will have the same (supposed to be) unique identifier, which caused problems with closing and layering.<br /><br />
+    Version 0.1.2b<br />
+    This is a very important and large release for DremJS!<br />
+    We are going to hard code the start menu to stay open at all times for a while until we care enough to reimpliment it better.<br />
     <!--  Maybe in 0.1.3b... -->
-    <!--<p>+++We're very glad to present a very basic application installation program! It only works on MiniWeb. I don't know if it will work on Apache servers or not.</p>-->
-    <p>+++With the brand new Agenda WM, you can now multitask in DremJS!</p>
-    <p>+Added 'cmd_fm' command to terminal. CMD.FM is a free online radio service that looks like a computer terminal.</p> 
-    <p>Version 0.1.1b</p>
-    <p>+A terminal that is accessable from the Debug Menu. It's based off of <a href="https://codepen.io/AndrewBarfield/pen/qEqWMq?css-preprocessor=scss">Andrew Barfield's HTML5 Web Terminal</a>.</p>
-    <p>~Some UI Tweaks</p>
-    <p>~Bug Fixes</p>
-    <p>~Made the shutdown function actually shut DremJS down</p>
-    <p>Version 0.1.0b</p>
-    <p>+A taskbar</p>
-    <p>++Home button moved to taskbar</p>
-    <p>++About app is on taskbar for defaults. Because we are still working on the taskbar, documentation for adding or removing icons from the taskbar will not be released yet.</p>
-    <p>~Some apps moved to the Marketplace to make DremJS smaller. The most important apps stay (About, DremJS Market, How to Install Apps, Report a Bug)</p>
-    <p>Version 0.0.9-1a</p>
-    <p>+PVT Counter</p>
-    <p>~Improved 404 screen that isn't an eye sore when you look at it in the dark</p>
-    <p>~Bug Fixes</p>
-    <p>~Made the GUI more centered and prettier</p>
-    <p>Version 0.0.8-2a</p>
-    <p>=More WAV to MP3 fixes</p>
-    <p>Version 0.0.8-1a</p>
-    <p>+A crash handler for 404 errors, should you have any.</p>
-    <p>+A little debug menu that can be found in the bug report application. Uncommenting it will enable it. At the moment, it is mostly useless.</p>
-    <p>~A few minor patches</p>
-    <p>Version 0.0.8a</p>
-    <p>+Shutdown animation</p>
-    <p>+Added icons for downloadable apps (apps in DremJS Market)</p>
-    <p>=Better Shop app (no iframe inside an iframe)</p>
-    <p>=Better way of getting downloads from DremJS Market (GitHub Releases)</p>
-    <p>=To prevent having to resize div in index-open.html, the start menu takes up the entire left hand side of the open page</p>
-    <p>=SO MANY MORE BUG FIXES!!!</p>
-    <p>Version 0.0.7-3a</p>
-    <p>Removed the underlines and made all application links black in the start menu.</p>
-    <p>Version 0.0.7-2a</p>
-    <p>Ironically, fixed a bug in the debug application which caused DremJS to open in a new tab when clicking "Go Back" by simply removing it. That's the home button's job anyway!</p>
-    <p>Version 0.0.7-1a</p>
-    <p>~Compatibility Update</p>
-    <p>Tured some .wav files into mp3 files for consistancy, and for better support for MiniWeb</p>
-    <p>Made the Debug application an application with the purpose of bug reporting</p>
-    <p>Version 0.0.7a</p>
-    <p>~Compatibility Update</p>
-    <p>+Changed iframes to use %'s rather than px. This will make the OS grow or shrink per the device's size. This was mainly added for smaller devices such as phones and tablets.</p>
-    <p>Version 0.0.6-1a</p>
-    <p>+Open menu sound added</p>
-    <p>+Ambient music added in some built in applications</p>
-    <p>Version 0.0.6a</p>
-    <p>This update was really only made for fun and to make the OS overall prettier.</p>
-    <p>~The Market got moved to the actual DremJS-Market repository so that everyone has the same DremJS Market</p>
-    <p>+App Icons!</p>
-    <p>+Favicon!</p>
-    <p>+Shutdown Button</p>
-    <p>+Shutdown Sound</p>
-    <p>+Startup Sound</p>
-    <p>+A few more small tweaks to make the OS prettier</p>
-    <p>Version 0.0.5a</p>
-    <p>+Whats that?! It's a gradualy improving app store!! You must download DremJS and host it or run it on your browser on your own PC to use it though.</p>
-    <p>Installation instructions are inside the zip that will download from it. Read it before you install!!!</p>
-    <p>Version 0.0.4a</p>
-    <p>+Sam&Yoe Group: The Video Game</p>
-    <p>  ~Music has some problems</p>
-    <p>Version 0.0.3a</p>
-    <p>Now for some functionality.</p>
-    <p>+TinyMCE Text Editor</p>
-    <p>+Paint app</p>
-    <p>Version 0.0.2a</p>
-    <p>+This version actually used javascript for the home button! Now DremJS really is DremJS! Seriously though, when installing web apps on this thing that don't have a home button, this button is a life saver.</p>
-    <p>-All built-in apps have gotten their home buttons removed due to the "master" home button.</p>
-    <p>-Test Apps Removed (from start menu)</p>
-    <p>Version 0.0.1a</p>
-    <p>The first ever version. Doesn't even have JS yet, despite the name. Don't expect much.</p>
-    <p>Future ideas:</p>
-    <p>To be able to go back to the home screen easier, I will soon add a home button by loading apps using iframe instead.</p>
+    <!--+++We're very glad to present a very basic application installation program! It only works on MiniWeb. I don't know if it will work on Apache servers or not.-->
+    +++With the brand new Agenda WM, you can now multitask in DremJS!<br />
+    +Added 'cmd_fm' command to terminal. CMD.FM is a free online radio service that looks like a computer terminal. <br /><br />
+    Version 0.1.1b<br />
+    +A terminal that is accessable from the Debug Menu. It's based off of <a href="https://codepen.io/AndrewBarfield/pen/qEqWMq?css-preprocessor=scss">Andrew Barfield's HTML5 Web Terminal</a>.<br />
+    ~Some UI Tweaks<br />
+    ~Bug Fixes<br />
+    ~Made the shutdown function actually shut DremJS down<br /><br />
+    Version 0.1.0b<br />
+    +A taskbar<br />
+    ++Home button moved to taskbar<br />
+    ++About app is on taskbar for defaults. Because we are still working on the taskbar, documentation for adding or removing icons from the taskbar will not be released yet.<br />
+    ~Some apps moved to the Marketplace to make DremJS smaller. The most important apps stay (About, DremJS Market, How to Install Apps, Report a Bug)<br /><br />
+    Version 0.0.9-1a<br />
+    +PVT Counter<br />
+    ~Improved 404 screen that isn't an eye sore when you look at it in the dark<br />
+    ~Bug Fixes<br />
+    ~Made the GUI more centered and prettier<br /><br />
+    Version 0.0.8-2a<br />
+    =More WAV to MP3 fixes<br /><br />
+    Version 0.0.8-1a<br />
+    +A crash handler for 404 errors, should you have any.<br />
+    +A little debug menu that can be found in the bug report application. Uncommenting it will enable it. At the moment, it is mostly useless.<br />
+    ~A few minor patches<br /><br />
+    Version 0.0.8a<br />
+    +Shutdown animation<br />
+    +Added icons for downloadable apps (apps in DremJS Market)<br />
+    =Better Shop app (no iframe inside an iframe)<br />
+    =Better way of getting downloads from DremJS Market (GitHub Releases)<br />
+    =To prevent having to resize div in index-open.html, the start menu takes up the entire left hand side of the open page<br />
+    =SO MANY MORE BUG FIXES!!!<br /><br />
+    Version 0.0.7-3a<br />
+    Removed the underlines and made all application links black in the start menu.<br /><br />
+    Version 0.0.7-2a<br />
+    Ironically, fixed a bug in the debug application which caused DremJS to open in a new tab when clicking "Go Back" by simply removing it. That's the home button's job anyway!<br /><br />
+    Version 0.0.7-1a<br />
+    ~Compatibility Update<br />
+    Turned some .wav files into mp3 files for consistancy, and for better support for MiniWeb<br />
+    Made the Debug application an application with the purpose of bug reporting<br /><br />
+    Version 0.0.7a<br />
+    ~Compatibility Update<br />
+    +Changed iframes to use %'s rather than px. This will make the OS grow or shrink per the device's size. This was mainly added for smaller devices such as phones and tablets.<br /><br />
+    Version 0.0.6-1a<br />
+    +Open menu sound added<br />
+    +Ambient music added in some built in applications<br /><br />
+    Version 0.0.6a<br />
+    This update was really only made for fun and to make the OS overall prettier.<br />
+    ~The Market got moved to the actual DremJS-Market repository so that everyone has the same DremJS Market<br />
+    +App Icons!<br />
+    +Favicon!<br />
+    +Shutdown Button<br />
+    +Shutdown Sound<br />
+    +Startup Sound<br />
+    +A few more small tweaks to make the OS prettier<br /><br />
+    Version 0.0.5a<br />
+    +Whats that?! It's a gradualy improving app store!! You must download DremJS and host it or run it on your browser on your own PC to use it though.<br />
+    Installation instructions are inside the zip that will download from it. Read it before you install!!!<br /><br />
+    Version 0.0.4a<br />
+    +Sam&Yoe Group: The Video Game<br />
+      ~Music has some problems<br /><br />
+    Version 0.0.3a<br />
+    Now for some functionality.<br />
+    +TinyMCE Text Editor<br />
+    +Paint app<br /><br />
+    Version 0.0.2a<br />
+    +This version actually used javascript for the home button! Now DremJS really is DremJS! Seriously though, when installing web apps on this thing that don't have a home button, this button is a life saver.<br />
+    -All built-in apps have gotten their home buttons removed due to the "master" home button.<br />
+    -Test Apps Removed (from start menu)<br /><br />
+    Version 0.0.1a<br />
+    The first ever version. Doesn't even have JS yet, despite the name. Don't expect much.<br />
+    Future ideas:<br />
+    To be able to go back to the home screen easier, I will soon add a home button by loading apps using iframe instead.</p>
       </body>
 </html>

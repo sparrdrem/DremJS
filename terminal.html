@@ -4,15 +4,12 @@
 <head>
   <meta charset="UTF-8">
   <title>DremJS Terminal</title>
-  
-  
-  
-      <link rel="stylesheet" href="css/style.css">
-
-  
+    
+	<link rel="stylesheet" type="text/css" title="dark" href="css/dark.css">
+	<!--<link rel="alternate stylesheet" type="text/css" title="lite" href="css/lite.css">-->
 </head>
 
-<body>
+<body onload="setTheme();">
 
   <html>
   <head>
@@ -23,6 +20,46 @@
           rel="stylesheet" type="text/css" />
   </head>
   <body>
+  <script>
+	function setTheme() {
+		if (checkCookie('terminalTheme') == false) {
+			document.cookie = "terminalTheme=0";
+		} else {
+			theme = getCookie('terminalTheme');
+			if (theme == 1) {
+				/*var stylesheet = document.getElementById("stylesheet");
+				stylesheet.setAttribute('href', 'css/lite.css');*/
+				var cssLink = $('link[href*="css/dark.css"]');
+				cssLink.replaceWith('<link href="css/lite.css" type="text/css" rel="stylesheet">');
+			}
+		}
+	}
+	
+	function checkCookie(cname) {
+		var cookie = getCookie(cname);
+		if (cookie != "") {
+			return true;
+		} else {
+			return false;
+		}
+	}
+	
+	function getCookie(cname) {
+		var name = cname + "=";
+		var decodedCookie = decodeURIComponent(document.cookie);
+		var ca = decodedCookie.split(';');
+		for(var i = 0; i <ca.length; i++) {
+			var c = ca[i];
+			while (c.charAt(0) == ' ') {
+				c = c.substring(1);
+			}
+			if (c.indexOf(name) == 0) {
+				return c.substring(name.length, c.length);
+			}
+		}
+		return "";
+	}
+  </script>
     <div id="container">
       <output></output>
       <div id="input-line" class="input-line">
