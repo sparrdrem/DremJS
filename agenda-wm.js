@@ -13,8 +13,12 @@
  */
 
 function initAgendaWM() {
+	console.log("Initializing Agenda WM");
 	startTime();
+	console.log("Starting widgets");
+	startWidgets();
 	makeDraggable();
+	console.log("Agenda WM Initialized");
 } // Initialize Agenda
 
 function makeDraggable() {
@@ -28,11 +32,16 @@ function moveToFront(app) {
 	$('#' + app).css('z-index', 9999);
 } // Move a clicked application to the front
 
-function openApplication(app, width, height, appIcon) {
+function openApplication(app, width, height, appIcon, filename) {
 	// Set width and height as default if one is <=-1
         if (width <= -1 || height <= -1 || width == undefined || height == undefined) {
 	        width="500";
 	        height="300";
+	}
+	if (filename == undefined) {
+		file = "";
+	} else {
+		file = filename;
 	}
 	var i = 0;
         // Get the first available application ID.
@@ -54,8 +63,8 @@ function openApplication(app, width, height, appIcon) {
 
            Quite frustrating to work with, but it works. I'll make it fancier later, but right now it is good enough.
            */
-            var application="<div onclick=\"moveToFront('" + i + "')\" name='" + app + "' id='" + i + "' class='framewrap' style='width:" + width + "px; height:" + height + "px'><input type='button' onclick=\"closeApplication('" + i + "')\" value='X' /><input type='button' onclick=\"maximizeApplication('" + i + "')\" value='\u25A1' /><input type='button' onclick=\"minimizeApplication('" + i + "')\" value='_' /><iframe class='appFrame' src='apps/" + app + "/'></iframe></div>";
-            var taskbarApp="<div id='task" + i + "' onclick=\"minimizeApplication('" + i + "')\" class='taskbarApps'><img src='apps/" + app + "/" + appIcon + "' style='width:32px;height:32px' align='middle' /></div>";
+            var application="<div onclick=\"moveToFront('" + i + "')\" name='" + app + "' id='" + i + "' class='framewrap' style='width:" + width + "px; height:" + height + "px'><input type='button' onclick=\"closeApplication('" + i + "')\" value='X' /><input type='button' onclick=\"maximizeApplication('" + i + "')\" value='\u25A1' /><input type='button' onclick=\"minimizeApplication('" + i + "')\" value='_' /><iframe class='appFrame' src='apps/" + app + "/" + file + "'></iframe></div>";
+            var taskbarApp="<div id='task" + i + "' onclick=\"moveToFront('" + i + "')\" class='taskbarApps'><img src='apps/" + app + "/" + appIcon + "' style='width:32px;height:32px' align='middle' /></div>";
             var parent=document.getElementById('appContainer');
             parent.insertAdjacentHTML('beforeend', application);
             var parent=document.getElementById('taskbarApps');
@@ -65,12 +74,46 @@ function openApplication(app, width, height, appIcon) {
             moveToFront(i);
             makeDraggable();
         } // Opens an application.
+	function openWidget(widget, filename) {
+		if (filename == undefined) {
+			file = "";
+        	} else {
+                	file = filename;
+        	}
+		var i = 0;
+		// Get the first available application ID.
+		while ($('#' + i).length)
+    			i++;
+		var newWidget = "<div name='" + widget + "' id='" + i + "' class='framewrap' style='width:300px;height:300px;'><iframe class='appFrame' src='widgets/" + widget + "/" + file + "'></iframe></div>";
+		var parent=document.getElementById('appContainer');
+                parent.insertAdjacentHTML('beforeend', newWidget);
+		makeDraggable();
+	} // Start a new widget
 
-	    function closeApplication(id) {
-            var application = document.getElementById(id);
-            var taskbarApp = document.getElementById('task' + id);
-            application.parentNode.removeChild(application);
-            taskbarApp.parentNode.removeChild(taskbarApp);
+	function startWidgets() {
+		jQuery.get('/enabled_widgets', function(data) {
+			var widgets = data.split("\n");
+			for(i = 0; i < widgets.length-1; i++) {
+				if(true) {
+					console.log('Opening ' + widgets[i]);
+					openWidget(widgets[i]);
+				} else {
+					console.log("ERROR: Can't open widget - a network error occurred. This probably means this widget does not exist. Ignoring.");
+				}
+			}
+		});
+	} // Start all enabled widgets
+
+	function closeApplication(id) {
+            if(idExists(id)) {
+                var application = document.getElementById(id);
+                var taskbarApp = document.getElementById('task' + id);
+                application.parentNode.removeChild(application);
+		if(taskbarApp != null)
+	                taskbarApp.parentNode.removeChild(taskbarApp);
+            } else {
+                console.log("Application with ID " + id + " does not exist. Ignoring.");
+            }
         } // Closes an application.
 
         function maximizeApplication(id) {
@@ -108,4 +151,26 @@ function startTime() {
 function checkTime(i) {
 	if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
 	return i;
+}
+
+/*function returnStatus(req, status) {
+	//console.log(req);
+	if(status == 200) {
+		console.log("The url is available");
+		// send an event
+  	} else {
+		console.log("The url returned status code " + status);
+		// send a different event
+	}
+}*/
+
+function fetchStatus(address) {
+	var client = new XMLHttpRequest();
+	client.onreadystatechange = function() {
+	// in case of network errors this might not give reliable results
+	if(this.readyState == 4)
+		return this.status;
+	}
+	client.open("HEAD", address);
+	client.send();
 }

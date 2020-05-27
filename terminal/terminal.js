@@ -8,23 +8,6 @@ var modules = [];
 var moduleCode = [];
 var modInstall;
 var firstLine = "";
-var theme = getCookie('terminalTheme');
-
-function getCookie(cname) {
-	var name = cname + "=";
-	var decodedCookie = decodeURIComponent(document.cookie);
-	var ca = decodedCookie.split(';');
-	for(var i = 0; i <ca.length; i++) {
-		var c = ca[i];
-		while (c.charAt(0) == ' ') {
-			c = c.substring(1);
-		}
-		if (c.indexOf(name) == 0) {
-			return c.substring(name.length, c.length);
-		}
-	}
-	return "";
-}
 
 util.toArray = function(list) {
   return Array.prototype.slice.call(list || [], 0);
@@ -49,7 +32,7 @@ var Terminal = Terminal || function(cmdLineContainer, outputContainer) {
   var output_ = document.querySelector(outputContainer);
 
   cmds = [
-    'cat', 'clear', 'clock', 'date', 'echo', 'help', 'uname', 'cmd_fm', 'procman', 'insmod', 'rmmod', 'settheme'
+    'cat', 'clear', 'clock', 'date', 'echo', 'help', 'uname', 'cmd_fm', 'procman', 'insmod', 'rmmod', 'swaptheme', 'cowsay'
   ];
   
   var fs_ = null;
@@ -124,9 +107,12 @@ var Terminal = Terminal || function(cmdLineContainer, outputContainer) {
       output_.appendChild(line);
 
       if (this.value && this.value.trim()) {
-        var args = this.value.split(' ').filter(function(val, i) {
+        /*var args = this.value.split(' ').filter(function(val, i) {
           return val;
-        });
+        });*/
+	var args = [].concat.apply([], this.value.split('"').map(function(v,i){
+		return i%2 ? v : v.split(' ')
+	})).filter(Boolean);
         var cmd = args[0].toLowerCase();
         args = args.splice(1); // Remove cmd from arg list.
       }
@@ -317,23 +303,27 @@ var Terminal = Terminal || function(cmdLineContainer, outputContainer) {
         case 'rmmod':
             output('[rmmod] fatal: not implimented. Maybe 0.1.6b?');
         break;
-		case 'settheme':
-			if (args[0] == 0 || args[0] == "dark") {
-				document.cookie = "terminalTheme=0";
-				output('Terminal theme updated to dark mode. Please restart the terminal for changes to take effect.')
-			} else if (args[0] == 1 || args[0] == "lite") {
-				document.cookie = "terminalTheme=1";
-				output('Terminal theme updated to lite mode. Please restart the terminal for changes to take effect.')
-			} else {
-				output('Usage:');
-				output('settheme <theme>');
-				output('Possible themes:');
-				output('0 - dark');
-				output('1 - lite');
-			}
-		break;
+	case 'swaptheme':
+		$.ajax({
+			url: 'terminal/scripts/swapTheme.php'
+		});
+		output('Theme swapped. Please restart the terminal and refresh it a few times.');
+	break;
+	case 'cowsay':
+		if(args[0] == null) {
+			output("cowsay [text] &lt;skin&gt;<br />Availible skins:<br />default\t\ttux<br />If no skin is provided or it is invalid, the default is used instead.");
+		} else {
+			var oReq = new XMLHttpRequest();
+			oReq.onload = function() {
+				output(this.responseText);
+			};
+			if(args[1] == null)
+				args[1] = "cow";
+			oReq.open("get", "terminal/scripts/cowsay.php?inputText=" + args[0] + "&skin=" + args[1], true);
+			oReq.send();
+		}
+	break;
         default:
-	  
           var notFoundFlag = 1;
           if (cmd != undefined) {
 	  // Checks if the default terminal command exists
@@ -390,7 +380,7 @@ var Terminal = Terminal || function(cmdLineContainer, outputContainer) {
 
   //
   function output(html) {
-    output_.insertAdjacentHTML('beforeEnd', '<p>' + html + '</p>');
+    output_.insertAdjacentHTML('beforeEnd', '<p style="white-space:pre;">' + html + '</p>');
   }
 
   function sleep(delay) {
@@ -416,11 +406,13 @@ var Terminal = Terminal || function(cmdLineContainer, outputContainer) {
   //
   return {
     init: function() {
-		if(theme == 0) {
-			output('<img align="left" src="termlogo-dark.png" width="100" height="100" style="padding: 0px 10px 20px 0px"><h2 style="letter-spacing: 4px">DremJS Terminal</h2><p>' + new Date() + '</p><p>Enter "help" for more information.</p>');
-		} else {
-			output('<img align="left" src="termlogo-lite.png" width="100" height="100" style="padding: 0px 10px 20px 0px"><h2 style="letter-spacing: 4px">DremJS Terminal</h2><p>' + new Date() + '</p><p>Enter "help" for more information.</p>');
-		}
+		jQuery.get('terminal/configs/theme.conf', function(data) {
+			if(data == "1") {
+				output('<img align="left" src="termlogo-lite.png" width="100" height="100" style="padding: 0px 10px 20px 0px"><h2 style="letter-spacing: 4px">DremJS Terminal</h2><p>' + new Date() + '</p><p>Enter "help" for more information.</p>');
+			} else {
+				output('<img align="left" src="termlogo-dark.png" width="100" height="100" style="padding: 0px 10px 20px 0px"><h2 style="letter-spacing: 4px">DremJS Terminal</h2><p>' + new Date() + '</p><p>Enter "help" for more information.</p>');
+			}
+		});
     },
     output: output
   }

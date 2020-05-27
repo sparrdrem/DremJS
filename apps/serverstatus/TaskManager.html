@@ -1,0 +1,60 @@
+<html>
+	<head>
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+                <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.17/jquery-ui.min.js"></script>
+		<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.17/themes/base/jquery-ui.css" rel="stylesheet" type="text/css" />
+		<style>
+			body {
+				font-family: Calibri;
+			}
+			.buttonA, .buttonB {
+				display: inline-block;
+			}
+			.buttons {
+				width: 100%;
+				left: 0px;
+				top: 0px;
+				position: sticky;
+				background-color: #D3D3D3;
+			}
+		</style>
+		<script type="text/javascript">
+			$(function() {
+				var i = 0
+				while (i <= 1000) {
+                                        if (parent.idExists(i)) {
+                                                        content='<tr><td><p>'+i+'</p></td><td><p>'+parent.idExists(i)+'</p></td><td><button class="sideRight" type="button" onclick="parent.closeApplication('+i+')">Kill</button></td></tr>';
+                                                        var container=document.getElementById("container");
+                                                        container.insertAdjacentHTML("beforeend", content);
+                                                        //console.log(i + "\t\t" + parent.idExists(i));
+                                        }
+                                        i++;
+                                }
+			});
+			function startRefresh() {
+                        	$.get("TaskManager.html", function(data) {
+                                	$(document.body).html(data);
+                                });
+                        }
+                        $(function() {
+                        	setTimeout(startRefresh,1000);
+                        });
+		</script>
+	</head>
+	<body>
+		<div class="buttons">
+			<a href="index.php"><button type="button" class="buttonA">Status</button></a>
+			<button type="button" class="buttonB" disabled>Task Manager</button>
+		</div>
+		<table id="container" style="width:100%">
+			<thead>
+				<tr>
+					<th>ID</th>
+					<th>Process Name</th> 
+					<th></th>
+				</tr>
+			</thead>
+			
+		</table>
+	</body>
+</html>

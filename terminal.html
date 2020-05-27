@@ -9,7 +9,7 @@
 	<!--<link rel="alternate stylesheet" type="text/css" title="lite" href="css/lite.css">-->
 </head>
 
-<body onload="setTheme();">
+<body>
 
   <html>
   <head>
@@ -19,8 +19,21 @@
     <link href="https://fonts.googleapis.com/css?family=Inconsolata"
           rel="stylesheet" type="text/css" />
   </head>
-  <body>
+  <body onload="getTheme();">
   <script>
+	function getTheme() {
+		jQuery.get('terminal/configs/theme.conf', function(data) {
+			if(data == "1") {
+				var cssLink = $('link[href*="css/dark.css"]');
+				cssLink.replaceWith('<link href="css/lite.css" type="text/css" rel="stylesheet">');
+			} else {
+				var cssLink = $('link[href*="css/lite.css"]');
+				cssLink.replaceWith('<link href="css/dark.css" type="text/css" rel="stylesheet">');
+			}
+		});
+	}
+  </script>
+  <!--<script>                                              old script
 	function setTheme() {
 		if (checkCookie('terminalTheme') == false) {
 			document.cookie = "terminalTheme=0";
@@ -59,7 +72,7 @@
 		}
 		return "";
 	}
-  </script>
+  </script>-->
     <div id="container">
       <output></output>
       <div id="input-line" class="input-line">
@@ -69,7 +82,7 @@
     
     <!--<script src="http://www.codehelper.io/api/ips/?js"></script>-->
     <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-    <script src="js/terminal.js"></script>
+    <script src="terminal/terminal.js"></script>
     
     <div class="clock-container">
       <svg viewBox="0 0 100 100">
@@ -87,7 +100,7 @@
   
   
 
-    <script  src="js/index.js"></script>
+    <script  src="terminal/index.js"></script>
 
 
 
