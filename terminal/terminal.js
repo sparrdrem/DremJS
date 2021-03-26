@@ -9,6 +9,8 @@ var moduleCode = [];
 var modInstall;
 var firstLine = "";
 
+document.addEventListener('contextmenu', event => event.preventDefault());
+
 util.toArray = function(list) {
   return Array.prototype.slice.call(list || [], 0);
 };

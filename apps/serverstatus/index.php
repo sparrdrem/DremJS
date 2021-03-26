@@ -47,6 +47,9 @@
 					</style>
 				</head>
 				<body>
+				<script>
+    				document.addEventListener("contextmenu", event => event.preventDefault());
+  				</script>
 					<div class="buttons">
 						<button type="button" class="buttonA" disabled>Status</button>
 						<a href="TaskManager.html"><button type="button" class="buttonB">Task Manager</button></a>

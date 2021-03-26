@@ -1,0 +1,2 @@
+[27-Oct-2020 09:43:56 America/Chicago] PHP Parse error:  syntax error, unexpected '}' in /mnt/c/Users/Sam/Documents/dremjs/DremJS-0.1.6b/apps/cinema/index.php on line 46
+[27-Oct-2020 09:45:05 America/Chicago] PHP Notice:  Undefined index: action in /mnt/c/Users/Sam/Documents/dremjs/DremJS-0.1.6b/apps/cinema/index.php on line 53

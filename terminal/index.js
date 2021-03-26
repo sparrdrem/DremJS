@@ -1,5 +1,5 @@
+document.addEventListener('contextmenu', event => event.preventDefault());
 $(function() {
-  
   // Set the command-line prompt to include the user's IP Address
   //$('.prompt').html('[' + codehelper_ip["IP"] + '@HTML5] # ');
     $('.prompt').html('[user@DremJS] # ');

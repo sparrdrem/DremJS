@@ -1,0 +1,27 @@
+[25-Aug-2020 21:42:10 America/Chicago] PHP Notice:  Undefined variable: file in /mnt/c/Users/Sam/Documents/dremjs/DremJS-0.1.6b/apps/notepad/index.php on line 76
+[25-Aug-2020 21:42:10 America/Chicago] PHP Notice:  Undefined variable: file in /mnt/c/Users/Sam/Documents/dremjs/DremJS-0.1.6b/apps/notepad/index.php on line 80
+[25-Aug-2020 21:42:18 America/Chicago] PHP Notice:  Undefined variable: file in /mnt/c/Users/Sam/Documents/dremjs/DremJS-0.1.6b/apps/notepad/index.php on line 76
+[25-Aug-2020 21:42:18 America/Chicago] PHP Notice:  Undefined variable: file in /mnt/c/Users/Sam/Documents/dremjs/DremJS-0.1.6b/apps/notepad/index.php on line 80
+[25-Aug-2020 21:44:42 America/Chicago] PHP Parse error:  syntax error, unexpected 'return' (T_RETURN), expecting ';' in /mnt/c/Users/Sam/Documents/dremjs/DremJS-0.1.6b/apps/notepad/index.php on line 10
+[25-Aug-2020 21:50:40 America/Chicago] PHP Notice:  Undefined index: open in /mnt/c/Users/Sam/Documents/dremjs/DremJS-0.1.6b/apps/notepad/index.php on line 211
+[25-Aug-2020 21:51:12 America/Chicago] PHP Notice:  Undefined index: open in /mnt/c/Users/Sam/Documents/dremjs/DremJS-0.1.6b/apps/notepad/index.php on line 211
+[25-Aug-2020 21:51:22 America/Chicago] PHP Notice:  Undefined index: open in /mnt/c/Users/Sam/Documents/dremjs/DremJS-0.1.6b/apps/notepad/index.php on line 211
+[25-Aug-2020 21:51:24 America/Chicago] PHP Notice:  Undefined index: open in /mnt/c/Users/Sam/Documents/dremjs/DremJS-0.1.6b/apps/notepad/index.php on line 211
+[25-Aug-2020 21:51:32 America/Chicago] PHP Notice:  Undefined index: open in /mnt/c/Users/Sam/Documents/dremjs/DremJS-0.1.6b/apps/notepad/index.php on line 211
+[25-Aug-2020 21:51:41 America/Chicago] PHP Notice:  Undefined index: open in /mnt/c/Users/Sam/Documents/dremjs/DremJS-0.1.6b/apps/notepad/index.php on line 211
+[25-Aug-2020 21:51:48 America/Chicago] PHP Notice:  Undefined index: open in /mnt/c/Users/Sam/Documents/dremjs/DremJS-0.1.6b/apps/notepad/index.php on line 211
+[25-Aug-2020 21:52:43 America/Chicago] PHP Notice:  Undefined index: openfile in /mnt/c/Users/Sam/Documents/dremjs/DremJS-0.1.6b/apps/notepad/index.php on line 211
+[25-Aug-2020 21:52:46 America/Chicago] PHP Notice:  Undefined index: openfile in /mnt/c/Users/Sam/Documents/dremjs/DremJS-0.1.6b/apps/notepad/index.php on line 211
+[25-Aug-2020 21:52:47 America/Chicago] PHP Notice:  Undefined index: openfile in /mnt/c/Users/Sam/Documents/dremjs/DremJS-0.1.6b/apps/notepad/index.php on line 211
+[25-Aug-2020 21:53:04 America/Chicago] PHP Notice:  Undefined index: openfile in /mnt/c/Users/Sam/Documents/dremjs/DremJS-0.1.6b/apps/notepad/index.php on line 211
+[25-Aug-2020 21:53:06 America/Chicago] PHP Notice:  Undefined index: openfile in /mnt/c/Users/Sam/Documents/dremjs/DremJS-0.1.6b/apps/notepad/index.php on line 211
+[25-Aug-2020 21:53:45 America/Chicago] PHP Parse error:  syntax error, unexpected '<', expecting end of file in /mnt/c/Users/Sam/Documents/dremjs/DremJS-0.1.6b/apps/notepad/index.php on line 213
+[25-Aug-2020 21:53:47 America/Chicago] PHP Parse error:  syntax error, unexpected '<', expecting end of file in /mnt/c/Users/Sam/Documents/dremjs/DremJS-0.1.6b/apps/notepad/index.php on line 213
+[25-Aug-2020 21:53:54 America/Chicago] PHP Notice:  Undefined index: openfile in /mnt/c/Users/Sam/Documents/dremjs/DremJS-0.1.6b/apps/notepad/index.php on line 211
+[25-Aug-2020 21:53:54 America/Chicago] PHP Notice:  Undefined index: action in /mnt/c/Users/Sam/Documents/dremjs/DremJS-0.1.6b/apps/notepad/index.php on line 212
+[25-Aug-2020 21:55:30 America/Chicago] PHP Notice:  Undefined index: openfile in /mnt/c/Users/Sam/Documents/dremjs/DremJS-0.1.6b/apps/notepad/index.php on line 211
+[25-Aug-2020 21:55:33 America/Chicago] PHP Notice:  Undefined index: openfile in /mnt/c/Users/Sam/Documents/dremjs/DremJS-0.1.6b/apps/notepad/index.php on line 211
+[25-Aug-2020 21:59:29 America/Chicago] PHP Notice:  Undefined index: openfile in /mnt/c/Users/Sam/Documents/dremjs/DremJS-0.1.6b/apps/notepad/index.php on line 211
+[25-Aug-2020 21:59:29 America/Chicago] PHP Notice:  Undefined index: action in /mnt/c/Users/Sam/Documents/dremjs/DremJS-0.1.6b/apps/notepad/index.php on line 212
+[26-Aug-2020 08:55:57 America/Chicago] PHP Warning:  file_get_contents(/mnt/c/Users/Sam/Documents/dremjs/DremJS-0.1.6b/home/user/Documents/NewFile.txt): failed to open stream: No such file or directory in /mnt/c/Users/Sam/Documents/dremjs/DremJS-0.1.6b/apps/notepad/index.php on line 11
+[27-Oct-2020 09:13:28 America/Chicago] PHP Warning:  file_get_contents(/mnt/c/Users/Sam/Documents/dremjs/DremJS-0.1.6b/home/user/Documents/NewFile.txt): failed to open stream: No such file or directory in /mnt/c/Users/Sam/Documents/dremjs/DremJS-0.1.6b/apps/notepad/index.php on line 11

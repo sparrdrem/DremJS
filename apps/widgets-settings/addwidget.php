@@ -3,6 +3,9 @@
 		
 	</head>
 	<body>
+	<script>
+    document.addEventListener('contextmenu', event => event.preventDefault());
+  </script>
 		<?php
 			echo "List of availible widgets:<br />";
                         $widgets = array_filter(glob(getenv('DOCUMENT_ROOT').'/widgets/*'), 'is_dir');

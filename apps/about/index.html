@@ -20,17 +20,35 @@
   </style>
   </head>
   <body>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> 
+  <script>
+    document.addEventListener('contextmenu', event => event.preventDefault());
+    function GetDremJSMenuFunctions() {
+      return [
+        ["Secret", "SecretFunctionLol();"]
+      ];
+    }
+    function SecretFunctionLol() {
+      window.location.replace("https://www.youtube.com/embed/fC7oUOUEEi4");
+    }
+  </script>
   <section class="container">
 		<div class="left">
 			<img src="logo.png" style="width:128px;height:128px" />
 		</div>
 		<div class="right">
 			<h1>About DremJS</h1>
-			<h2>Version: 0.1.6b</h2>
-			<h2>Agenda WM 0.1.1b</h2>
+			<h2>Version: 0.1.7b</h2>
+			<h2>Agenda WM 0.1.2b</h2>
 		</div>
 	</section>
     <p>Changelog:<br />
+    Version 0.1.7b<br />
+    +File Manager<br />
+    +Notepad<br />
+    +A right-click context menu<br />
+    -Removed ambient music on most applications<br />
+    ~General system stability improvements to enhance the user's experience.<br /><br />
     Version 0.1.6b<br />
     +Widget support (see wiki for more information)<br />
     +Made clicking apps in the taskbar move applications to the front instead of minimizing.<br />
