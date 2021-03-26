@@ -88,7 +88,7 @@ function openApplication(app, width, height, appIcon, filename) {
 			//var taskbarApp="<div id='task" + i + "' onclick=\"moveToFront('" + i + "')\" class='taskbarApps'><img src='apps/" + app + "/" + appIcon + "' style='width:32px;height:32px' align='middle' /></div>";
 			if (!(detector.mobile())) {
 				var application="<div onclick=\"moveToFront('" + i + "')\" name='" + app + "' id='" + i + "' class='framewrap' style='width:" + width + "px; height:" + height + "px'><input type='button' onclick=\"closeApplication('" + i + "')\" value='X' /><input type='button' onclick=\"maximizeApplication('" + i + "')\" value='\u25A1' /><input type='button' onclick=\"minimizeApplication('" + i + "')\" value='_' /><iframe name='" + i + "' id='app" + i + "' class='appFrame' src='apps/" + app + "/'></iframe></div>";
-				var taskbarApp="<div onmousedown='SetCurrentTaskbarApp(" + i + ")' onmouseup='SetCurrentTaskbarApp(\"\")' id='task" + i + "' onclick=\"minimizeApplication('" + i + "')\" class='taskbarApps'><img src='apps/" + app + "/" + appIcon + "' style='width:32px;height:32px' align='middle' /></div>";
+				var taskbarApp="<div onmousedown='SetCurrentTaskbarApp(" + i + ")' onmouseup='SetCurrentTaskbarApp(\"\")' id='task" + i + "' onclick=\"minimizeApplication('" + i + "')\" class='taskbarApps taskbarAppOpen'><img src='apps/" + app + "/" + appIcon + "' style='width:32px;height:32px' align='middle' /></div>";
 			} else {
 				var application="<div onclick=\"moveToFront('" + i + "')\" name='" + app + "' id='" + i + "' class='framewrapMobile' style='width:" + width + "px; height:" + height + "px'><input type='button' onclick=\"showContextMenu('app" + i + "')\" value='&#9660;' /><iframe name='" + i + "' id='app" + i + "' class='appFrameMobile' src='apps/" + app + "/'></iframe></div>";
 				var taskbarApp="<div tabindex='0' onmousedown='SetCurrentTaskbarApp(" + i + ")' id='task" + i + "' onclick=\"moveToFront('" + i + "'); SetCurrentTaskbarApp(" + i + ")\" class='taskbarApps'><img src='apps/" + app + "/" + appIcon + "' style='width:32px;height:32px' align='middle' /></div>";
@@ -126,7 +126,7 @@ function openApplication(app, width, height, appIcon, filename) {
 	} // Start a new widget
 
 	function startWidgets() {
-		jQuery.get('/enabled_widgets', function(data) {
+		jQuery.get('/etc/enabled_widgets', function(data) {
 			var widgets = data.split("\n");
 			for(i = 0; i < widgets.length-1; i++) {
 				if(true) {

@@ -14,7 +14,7 @@
                         	echo $temp[sizeof($temp)-1].' ';
 			}
 			echo "<br /><br />Currently enabled widgets:<br />";
-			$enabledWidgets = explode("\n", file_get_contents(getenv('DOCUMENT_ROOT')."/enabled_widgets"));
+			$enabledWidgets = explode("\n", file_get_contents(getenv('DOCUMENT_ROOT')."/etc/enabled_widgets"));
 			for($i = 0; $i<=sizeof($enabledWidgets)-1; $i++)
 				echo $enabledWidgets[$i].' ';
 			echo "<br />";

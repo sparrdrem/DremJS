@@ -2,7 +2,7 @@
 	<head>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
-		<script src="jquery.ui.touch-punch.min.js"></script>
+		<script src="/js/jquery.ui.touch-punch.min.js"></script>
 		<link rel="stylesheet" type="text/css" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.7.1/themes/base/jquery-ui.css"/>
 		<!-- classes were from SparrOS Developer Team -->
     		<title>DremJS</title>
@@ -97,8 +97,18 @@
                     text-align: center;
                     float: left;
                     margin-left: 5px;
-                    margin-top: 2px;
+		    padding: 2px;
+		    border-radius: 6px;
+		    //border: 2px solid #FFFFFF;
                 }
+		.taskbarAppOpen {
+		    border: 2px solid #FFFFFF;
+		    //border-style: solid;
+                    //border-color: white;
+		    //border-width: 2px;
+		    //background-color: white;
+		    //border: 2px solid #FFFFFF;
+		}
 				.startbtn {
 					background-color: transparent;
 					color: black;
@@ -170,7 +180,7 @@
 			
 		</div>
 		<div class="start">
-			<button class="startbtn"><img src="logo.png" style="width:24px;height24px;"></button>
+			<button class="startbtn"><img src="/assets/media/images/logo.png" style="width:24px;height24px;"></button>
 			<div class="start-content">
 				<a onclick="openApplication('about', 800, 500, 'about.png')"><p><img src="apps/about/about.png" align="top"> About DremJS</p></a>
 				<a onclick="openApplication('howto', 800, 500, 'howto.png')"><p><img src="apps/howto/howto.png" align="top"> How to Install Applications</p></a>
@@ -183,7 +193,7 @@
                 <a onclick="openApplication('serverstatus', '300', '300', 'serverstatus.png')"><p><img src="apps/serverstatus/serverstatus.png" align="top" style="width:16px;height:16px;"> Server Status</p></a>
 				<a onclick="openApplication('widgets-settings', -1, -1, 'widgets-settings.png')"><p><img src="apps/widgets-settings/widgets-settings.png" align="top" style="width:16px;height:16px"> Widgets Settings</p></a>
 				<hr />
-				<a target="_top" href="shuttingdown.html"><p><img src="shutdown.png" align="top" style="width:16px;height:16px;"> Shutdown DremJS</p></a>
+				<a target="_top" href="shuttingdown.html"><p><img src="/assets/media/images/shutdown.png" align="top" style="width:16px;height:16px;"> Shutdown DremJS</p></a>
 			</div>
 		</div>
    		<div id="appContainer">
@@ -193,14 +203,14 @@
                 <!-- Add apps here -->
                 <div class="cwhite" style="text-align:left" id="txt"></div> <a onclick="openApplication('about', 800, 500, 'about.png')"><img src="apps/about/about.png"> |</a>
                 </div>
-                <div id="taskbarApps" class="taskbarApps">
+                <div id="taskbarApps">
             
                 </div>
         	</div>
 		</div>
 	</div>
-	<script src="mobile-detect.js"></script>
-	<script src="agenda-wm.js"></script>
+	<script src="/js/agenda/mobile-detect.js"></script>
+	<script src="/js/agenda/agenda-wm.js"></script>
 	<script>
 		var counter;
 		var pressHoldDuration = 50;

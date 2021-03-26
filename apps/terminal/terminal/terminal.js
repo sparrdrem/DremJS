@@ -188,7 +188,7 @@ var Terminal = Terminal || function(cmdLineContainer, outputContainer) {
           break;
         case 'spin':
             //show_image('spin.gif', 100, 100, 'Spinny');
-	    output('<img align="left" src="spin.gif" width="100" height="100">');
+	    output('<img align="left" src="' + $('script[src*=terminal]').attr('src').replace('terminal.js', '') +'/spin.gif" width="100" height="100">');
           break;
         case 'procman':
             var arguments = args.join(' ');
@@ -410,9 +410,9 @@ var Terminal = Terminal || function(cmdLineContainer, outputContainer) {
     init: function() {
 		jQuery.get('terminal/configs/theme.conf', function(data) {
 			if(data == "1") {
-				output('<img align="left" src="termlogo-lite.png" width="100" height="100" style="padding: 0px 10px 20px 0px"><h2 style="letter-spacing: 4px">DremJS Terminal</h2><p>' + new Date() + '</p><p>Enter "help" for more information.</p>');
+				output('<img align="left" src="/assets/media/images/termlogo-lite.png" width="100" height="100" style="padding: 0px 10px 20px 0px"><h2 style="letter-spacing: 4px">DremJS Terminal</h2><p>' + new Date() + '</p><p>Enter "help" for more information.</p>');
 			} else {
-				output('<img align="left" src="termlogo-dark.png" width="100" height="100" style="padding: 0px 10px 20px 0px"><h2 style="letter-spacing: 4px">DremJS Terminal</h2><p>' + new Date() + '</p><p>Enter "help" for more information.</p>');
+				output('<img align="left" src="/assets/media/images/termlogo-dark.png" width="100" height="100" style="padding: 0px 10px 20px 0px"><h2 style="letter-spacing: 4px">DremJS Terminal</h2><p>' + new Date() + '</p><p>Enter "help" for more information.</p>');
 			}
 		});
     },
