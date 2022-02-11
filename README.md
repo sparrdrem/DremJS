@@ -1,3 +1,6 @@
+# NOTICE
+This repo has been moved to [my Gitea server](https://git.innovation-inc.org/Innovation/dremjs). Please go there for updated code!
+
 # DremJS
 A multitasking (as of 0.1.2b) web OS featuring 3rd party support, an IDE (coming soon!), and much more (coming soon too.).
 
